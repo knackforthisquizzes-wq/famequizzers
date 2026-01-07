@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Terms of Use — famequizzers</title>
+  <meta name="description" content="Terms of Use for famequizzers. Rules of the road, disclaimers, and what using the site means." />
+  <link rel="canonical" href="https://famequizzers.com/terms/" />
+  <meta name="robots" content="index, follow" />
+
+  <!-- Open Graph -->
+  <meta property="og:site_name" content="famequizzers" />
+  <meta property="og:title" content="Terms of Use — famequizzers" />
+  <meta property="og:description" content="Rules of the road for using famequizzers." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://famequizzers.com/terms/" />
+
+  <link href="https://fonts.googleapis.com/css2?family=Passero+One&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet" />
+
+  <style>
+    :root{
+      --text:#fff;
+      --muted: rgba(255,255,255,0.86);
+      --border: rgba(255,255,255,0.20);
+      --border2: rgba(255,255,255,0.32);
+      --shadow: rgba(0,0,0,0.55);
+    }
+
+    *{ box-sizing:border-box; }
+    html, body{ height:100%; }
+    body{
+      margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+      color: var(--text);
+      background:#000;
+      overflow-x:hidden;
+    }
+    a{ color: inherit; }
+
+    /* ====== BACKGROUND (match site) ====== */
+    .bg{
+      position: fixed;
+      inset: 0;
+      z-index: -3;
+      background:
+        linear-gradient(180deg, rgba(0,0,0,0.55), rgba(0,0,0,0.78)),
+        url("/assets/bg.jpg") center/cover no-repeat;
+    }
+    .grain{
+      position: fixed;
+      inset: 0;
+      z-index: -2;
+      pointer-events: none;
+      background-image: radial-gradient(rgba(255,255,255,0.06) 1px, transparent 1px);
+      background-size: 3px 3px;
+      opacity: 0.08;
+      mix-blend-mode: overlay;
+    }
+    .bg-video{
+      position: fixed;
+      inset: 0;
+      z-index: -1;
+      opacity: 0.10;
+      pointer-events: none;
+    }
+    .bg-video video{
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    main{ min-height: 100vh; }
+
+    /* ====== TOP PILLS ====== */
+    .top-pills{
+      position: fixed;
+      top: 14px;
+      right: 14px;
+      z-index: 50;
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+      padding: 8px;
+      border-radius: 18px;
+      background: rgba(0,0,0,0.18);
+      border: 1px solid rgba(255,255,255,0.14);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      box-shadow: 0 18px 45px rgba(0,0,0,0.35);
+    }
+    .pill{
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 9px 12px;
+      border-radius: 999px;
+      font-weight: 800;
+      font-size: 13px;
+      letter-spacing: 0.2px;
+      color: rgba(255,255,255,0.95);
+      text-decoration: none;
+      background: rgba(255,255,255,0.10);
+      border: 1px solid rgba(255,255,255,0.18);
+      transition: transform 160ms ease, border-color 160ms ease, background 160ms ease;
+      user-select:none;
+    }
+    .pill:hover{
+      transform: translateY(-2px);
+      border-color: rgba(255,255,255,0.34);
+      background: rgba(255,255,255,0.14);
+    }
+    @media (max-width: 520px){
+      .top-pills{
+        top: 10px;
+        right: 10px;
+        left: 10px;
+        justify-content: center;
+      }
+    }
+
+    /* ====== HERO ====== */
+    .hero{
+      position: relative;
+      padding: clamp(58px, 7vw, 110px) 20px 18px;
+      overflow: hidden;
+    }
+    .hero-anim{
+      position:absolute;
+      inset:0;
+      pointer-events:none;
+      z-index:0;
+    }
+    .hero-anim::before{
+      content:"";
+      position:absolute;
+      inset:-45% -30%;
+      background:
+        radial-gradient(circle at 25% 25%, rgba(255,255,255,0.12), transparent 55%),
+        radial-gradient(circle at 70% 40%, rgba(0,255,221,0.08), transparent 60%);
+      transform: rotate(10deg);
+      animation: drift 9s ease-in-out infinite alternate;
+      opacity: 0.7;
+    }
+    @keyframes drift{
+      from{ transform: translate3d(-2%, -1%, 0) rotate(10deg); }
+      to{ transform: translate3d(2%, 1%, 0) rotate(14deg); }
+    }
+    .hero-inner{
+      position: relative;
+      z-index: 1;
+      max-width: 980px;
+      margin: 0 auto;
+      text-align: center;
+    }
+    .hero-title{
+      margin:0;
+      font-size: clamp(40px, 6vw, 66px);
+      line-height:1.05;
+      letter-spacing:0.4px;
+      text-shadow: 0 12px 30px rgba(0,0,0,0.55);
+      font-family: "Passero One", system-ui, sans-serif;
+      font-weight: 400;
+    }
+    .hero-sub{
+      margin: 14px auto 0;
+      max-width: 75ch;
+      font-size: clamp(14px, 2vw, 18px);
+      opacity: 0.92;
+      text-shadow: 0 10px 25px rgba(0,0,0,0.55);
+      font-family: "Roboto", system-ui, sans-serif;
+    }
+
+    /* ====== CONTENT ====== */
+    .wrap{ padding: 8px 20px 30px; }
+    .wrap-inner{ max-width: 980px; margin: 0 auto; display: grid; gap: 16px; }
+
+    .glass{
+      border-radius: 22px;
+      padding: 18px 18px 16px;
+      background: rgba(0,0,0,0.26);
+      border: 1px solid rgba(255,255,255,0.14);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      box-shadow: 0 18px 45px rgba(0,0,0,0.35);
+    }
+    .glass h2{
+      margin: 0;
+      font-size: 20px;
+      text-shadow: 0 10px 25px rgba(0,0,0,0.55);
+    }
+    .glass p, .glass li{
+      margin: 10px 0 0;
+      opacity: 0.92;
+      line-height: 1.6;
+      text-shadow: 0 10px 25px rgba(0,0,0,0.55);
+    }
+    .glass ul{ margin: 10px 0 0; padding-left: 18px; }
+
+    .note{
+      margin-top: 12px;
+      padding: 12px 12px 11px;
+      border-radius: 16px;
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.14);
+      opacity: 0.95;
+    }
+
+    .meta{
+      opacity: 0.75;
+      font-size: 13px;
+      line-height: 1.4;
+      margin-top: 10px;
+    }
+
+    code{
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      font-size: 0.95em;
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.14);
+      padding: 0 6px;
+      border-radius: 8px;
+    }
+
+    /* ====== FOOTER ====== */
+    .site-footer{ padding: 26px 20px 40px; }
+    .footer-inner{
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 18px 18px 16px;
+      border-radius: 20px;
+      background: rgba(0,0,0,0.22);
+      border: 1px solid rgba(255,255,255,0.14);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      box-shadow: 0 18px 45px rgba(0,0,0,0.35);
+      display: grid;
+      gap: 14px;
+    }
+    .footer-brand{ font-weight: 900; letter-spacing: 0.4px; font-size: 18px; }
+    .footer-tag{ opacity: 0.85; line-height: 1.4; margin-top: 6px; }
+    .footer-links{ display:flex; gap:14px; flex-wrap:wrap; }
+    .footer-links a{
+      opacity: 0.92;
+      text-decoration:none;
+      border-bottom: 1px solid rgba(255,255,255,0.20);
+      padding-bottom: 2px;
+      transition: opacity 160ms ease, border-color 160ms ease;
+    }
+    .footer-links a:hover{ opacity: 1; border-color: rgba(255,255,255,0.42); }
+    .footer-note{ opacity:0.75; font-size:13px; line-height:1.4; }
+  </style>
+</head>
+
+<body>
+  <div class="bg" aria-hidden="true"></div>
+  <div class="grain" aria-hidden="true"></div>
+
+  <div class="bg-video" aria-hidden="true">
+    <video autoplay muted loop playsinline preload="metadata" tabindex="-1" aria-hidden="true" src="../background-video.mp4"></video>
+  </div>
+
+  <nav class="top-pills" aria-label="Quick links">
+    <a class="pill" href="/">Home</a>
+    <a class="pill" href="/celebrity-fantasy/">Start</a>
+    <a class="pill" href="/privacy/">Privacy</a>
+  </nav>
+
+  <main>
+    <section class="hero" aria-label="Terms hero">
+      <div class="hero-anim" aria-hidden="true"></div>
+      <div class="hero-inner">
+        <h1 class="hero-title">Terms of Use</h1>
+        <p class="hero-sub">
+          Using famequizzers means you agree to the rules below. They’re here to protect you, the site, and the fragile peace of the internet.
+        </p>
+      </div>
+    </section>
+
+    <section class="wrap" aria-label="Terms content">
+      <div class="wrap-inner">
+
+        <div class="glass">
+          <h2>Effective date</h2>
+          <p>
+            These Terms are effective as of <strong><span id="effectiveDate">2026-01-05</span></strong>.
+          </p>
+        </div>
+
+        <div class="glass">
+          <h2>Acceptance of terms</h2>
+          <p>
+            By accessing or using famequizzers (the “Site”), you agree to these Terms of Use (“Terms”). If you do not agree, do not use the Site.
+          </p>
+        </div>
+
+        <div class="glass">
+          <h2>What the site is (and isn’t)</h2>
+          <p>
+            famequizzers provides entertainment-style quizzes and thought experiments about fame, attention, and public perception.
+          </p>
+          <div class="note">
+            <strong>Not advice:</strong> The Site does not provide professional medical, legal, financial, or psychological advice. Quiz results are not diagnoses and should not be treated as factual claims about you.
+          </div>
+        </div>
+
+        <div class="glass">
+          <h2>Eligibility</h2>
+          <p>
+            You must be able to form a legally binding agreement in your jurisdiction to use the Site.
+          </p>
+        </div>
+
+        <div class="glass">
+          <h2>Your responsibilities</h2>
+          <ul>
+            <li>Use the Site legally and respectfully.</li>
+            <li>Do not attempt to break, disable, or overload the Site.</li>
+            <li>Do not scrape or harvest data at scale without permission.</li>
+            <li>Do not upload or submit content that is unlawful, harmful, harassing, or invasive of privacy.</li>
+          </ul>
+        </div>
+
+        <div class="glass">
+          <h2>Prohibited conduct</h2>
+          <ul>
+            <li>Hacking, probing, or bypassing security.</li>
+            <li>Automated access that harms performance or integrity (bots, scripts, mass requests).</li>
+            <li>Submitting personal data you don’t have the right to share.</li>
+            <li>Impersonation or misrepresentation.</li>
+          </ul>
+          <div class="note">
+            If you do these things, we may block your access. This is not a villain arc. This is basic sanitation.
+          </div>
+        </div>
+
+        <div class="glass">
+          <h2>Intellectual property</h2>
+          <p>
+            The Site’s design, text, quiz structure, and branding are owned by the site operator or licensors and are protected by applicable intellectual property laws.
+          </p>
+          <p>
+            You may share links and short excerpts. You may not copy, reproduce, or republish substantial portions of the Site without permission.
+          </p>
+        </div>
+
+        <div class="glass">
+          <h2>User submissions</h2>
+          <p>
+            If the Site allows you to submit responses or other input, you grant us a license to use that input to operate and improve the Site (for example: analyzing aggregated quiz response patterns).
+          </p>
+          <p class="meta">
+            If you later add free-text fields, moderate them. Humans will type their entire autobiography into a textbox. It’s basically gravity.
+          </p>
+        </div>
+
+        <div class="glass">
+          <h2>Analytics and data</h2>
+          <p>
+            The Site uses analytics and may store quiz interaction data (including pseudonymous random user IDs and timestamps) to measure performance and improve quizzes.
+          </p>
+          <p>
+            Details are in the <a href="/privacy/">Privacy Policy</a>.
+          </p>
+        </div>
+
+        <div class="glass">
+          <h2>Disclaimers</h2>
+          <p>
+            The Site is provided “as is” and “as available.” We do not guarantee that the Site will be uninterrupted, error-free, or perfectly accurate.
+          </p>
+          <p>
+            Quiz results are subjective and for entertainment. Your lived reality may vary. The universe is complex.
+          </p>
+        </div>
+
+        <div class="glass">
+          <h2>Limitation of liability</h2>
+          <p>
+            To the maximum extent permitted by law, we are not liable for indirect, incidental, special, consequential, or punitive damages, or any loss of data, profits, or goodwill arising from your use of the Site.
+          </p>
+        </div>
+
+        <div class="glass">
+          <h2>Indemnification</h2>
+          <p>
+            If your use of the Site causes legal trouble for us (for example, you violate law or infringe rights), you agree to defend and indemnify the site operator to the extent permitted by law.
+          </p>
+        </div>
+
+        <div class="glass">
+          <h2>Termination</h2>
+          <p>
+            We may suspend or terminate access to the Site at any time if we reasonably believe you are violating these Terms, harming the Site, or abusing services.
+          </p>
+        </div>
+
+        <div class="glass">
+          <h2>Changes to these terms</h2>
+          <p>
+            We may update these Terms. When we do, we’ll update the effective date at the top. Continued use after changes means you accept the updated Terms.
+          </p>
+        </div>
+
+        <div class="glass">
+          <h2>Governing law</h2>
+          <p>
+            These Terms are governed by the laws applicable to the site operator’s location, unless your local consumer protection laws require otherwise.
+          </p>
+          <p class="meta">
+            If you want this to be specific (state/country), put it here once you decide where the site is legally based.
+          </p>
+        </div>
+
+        <div class="glass">
+          <h2>Contact</h2>
+          <p>
+            Questions about these Terms? Add a contact method here:
+          </p>
+          <p class="meta">
+            Site owner contact: <code>[add-email-or-contact-link]</code>
+          </p>
+        </div>
+
+      </div>
+    </section>
+
+    <footer class="site-footer" aria-label="Site footer">
+      <div class="footer-inner">
+        <div class="footer-left">
+          <div class="footer-brand">famequizzers</div>
+          <div class="footer-tag">A fun, slightly-too-honest mirror for celebrity attention.</div>
+        </div>
+
+        <div class="footer-links" aria-label="Footer links">
+          <a href="/">Home</a>
+          <a href="/celebrity-fantasy/">Start</a>
+          <a href="/privacy/">Privacy</a>
+        </div>
+
+        <div class="footer-note">
+          © <span id="y"></span> famequizzers. Not affiliated with any celebrity, paparazzi, or emotionally devastating comment section.
+        </div>
+      </div>
+
+      <script>
+        document.getElementById("y").textContent = new Date().getFullYear();
+        // Optional auto-effective date. Remove if you want manual control.
+        document.getElementById("effectiveDate").textContent = new Date().toISOString().slice(0,10);
+      </script>
+    </footer>
+  </main>
+</body>
+</html>

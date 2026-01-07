@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Privacy Policy — famequizzers</title>
+  <meta name="description" content="Privacy policy for famequizzers. Learn what we collect (analytics, quiz responses, timestamps, random IDs), why we collect it, and how you can control it." />
+  <link rel="canonical" href="https://famequizzers.com/privacy/" />
+  <meta name="robots" content="index, follow" />
+
+  <!-- Open Graph -->
+  <meta property="og:site_name" content="famequizzers" />
+  <meta property="og:title" content="Privacy Policy — famequizzers" />
+  <meta property="og:description" content="What famequizzers collects, why, and how you can control it." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://famequizzers.com/privacy/" />
+
+  <link href="https://fonts.googleapis.com/css2?family=Passero+One&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet" />
+
+  <style>
+    :root{
+      --text:#fff;
+      --muted: rgba(255,255,255,0.86);
+      --border: rgba(255,255,255,0.20);
+      --border2: rgba(255,255,255,0.32);
+      --shadow: rgba(0,0,0,0.55);
+    }
+
+    *{ box-sizing:border-box; }
+    html, body{ height:100%; }
+    body{
+      margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+      color: var(--text);
+      background:#000;
+      overflow-x:hidden;
+    }
+    a{ color: inherit; }
+
+    /* ====== BACKGROUND (match site) ====== */
+    .bg{
+      position: fixed;
+      inset: 0;
+      z-index: -3;
+      background:
+        linear-gradient(180deg, rgba(0,0,0,0.55), rgba(0,0,0,0.78)),
+        url("/assets/bg.jpg") center/cover no-repeat;
+    }
+    .grain{
+      position: fixed;
+      inset: 0;
+      z-index: -2;
+      pointer-events: none;
+      background-image: radial-gradient(rgba(255,255,255,0.06) 1px, transparent 1px);
+      background-size: 3px 3px;
+      opacity: 0.08;
+      mix-blend-mode: overlay;
+    }
+    .bg-video{
+      position: fixed;
+      inset: 0;
+      z-index: -1;
+      opacity: 0.10;
+      pointer-events: none;
+    }
+    .bg-video video{
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    main{ min-height: 100vh; }
+
+    /* ====== TOP PILLS ====== */
+    .top-pills{
+      position: fixed;
+      top: 14px;
+      right: 14px;
+      z-index: 50;
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+      padding: 8px;
+      border-radius: 18px;
+      background: rgba(0,0,0,0.18);
+      border: 1px solid rgba(255,255,255,0.14);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      box-shadow: 0 18px 45px rgba(0,0,0,0.35);
+    }
+    .pill{
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 9px 12px;
+      border-radius: 999px;
+      font-weight: 800;
+      font-size: 13px;
+      letter-spacing: 0.2px;
+      color: rgba(255,255,255,0.95);
+      text-decoration: none;
+      background: rgba(255,255,255,0.10);
+      border: 1px solid rgba(255,255,255,0.18);
+      transition: transform 160ms ease, border-color 160ms ease, background 160ms ease;
+      user-select:none;
+    }
+    .pill:hover{
+      transform: translateY(-2px);
+      border-color: rgba(255,255,255,0.34);
+      background: rgba(255,255,255,0.14);
+    }
+    @media (max-width: 520px){
+      .top-pills{
+        top: 10px;
+        right: 10px;
+        left: 10px;
+        justify-content: center;
+      }
+    }
+
+    /* ====== HERO ====== */
+    .hero{
+      position: relative;
+      padding: clamp(58px, 7vw, 110px) 20px 18px;
+      overflow: hidden;
+    }
+    .hero-anim{
+      position:absolute;
+      inset:0;
+      pointer-events:none;
+      z-index:0;
+    }
+    .hero-anim::before{
+      content:"";
+      position:absolute;
+      inset:-45% -30%;
+      background:
+        radial-gradient(circle at 25% 25%, rgba(255,255,255,0.12), transparent 55%),
+        radial-gradient(circle at 70% 40%, rgba(0,255,221,0.08), transparent 60%);
+      transform: rotate(10deg);
+      animation: drift 9s ease-in-out infinite alternate;
+      opacity: 0.7;
+    }
+    @keyframes drift{
+      from{ transform: translate3d(-2%, -1%, 0) rotate(10deg); }
+      to{ transform: translate3d(2%, 1%, 0) rotate(14deg); }
+    }
+    .hero-inner{
+      position: relative;
+      z-index: 1;
+      max-width: 980px;
+      margin: 0 auto;
+      text-align: center;
+    }
+    .hero-title{
+      margin:0;
+      font-size: clamp(40px, 6vw, 66px);
+      line-height:1.05;
+      letter-spacing:0.4px;
+      text-shadow: 0 12px 30px rgba(0,0,0,0.55);
+      font-family: "Passero One", system-ui, sans-serif;
+      font-weight: 400;
+    }
+    .hero-sub{
+      margin: 14px auto 0;
+      max-width: 70ch;
+      font-size: clamp(14px, 2vw, 18px);
+      opacity: 0.92;
+      text-shadow: 0 10px 25px rgba(0,0,0,0.55);
+      font-family: "Roboto", system-ui, sans-serif;
+    }
+
+    /* ====== CONTENT ====== */
+    .wrap{ padding: 8px 20px 30px; }
+    .wrap-inner{ max-width: 980px; margin: 0 auto; display: grid; gap: 16px; }
+
+    /* ====== DARK GLASS PANELS ====== */
+    .glass{
+      border-radius: 22px;
+      padding: 18px 18px 16px;
+      background: rgba(0,0,0,0.26);
+      border: 1px solid rgba(255,255,255,0.14);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      box-shadow: 0 18px 45px rgba(0,0,0,0.35);
+    }
+    .glass h2{
+      margin: 0;
+      font-size: 20px;
+      text-shadow: 0 10px 25px rgba(0,0,0,0.55);
+    }
+    .glass p, .glass li{
+      margin: 10px 0 0;
+      opacity: 0.92;
+      line-height: 1.6;
+      text-shadow: 0 10px 25px rgba(0,0,0,0.55);
+    }
+    .glass ul{ margin: 10px 0 0; padding-left: 18px; }
+    .note{
+      margin-top: 12px;
+      padding: 12px 12px 11px;
+      border-radius: 16px;
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.14);
+      opacity: 0.95;
+    }
+    .meta{
+      opacity: 0.75;
+      font-size: 13px;
+      line-height: 1.4;
+      margin-top: 10px;
+    }
+
+    code{
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      font-size: 0.95em;
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.14);
+      padding: 0 6px;
+      border-radius: 8px;
+    }
+
+    /* ====== FOOTER ====== */
+    .site-footer{ padding: 26px 20px 40px; }
+    .footer-inner{
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 18px 18px 16px;
+      border-radius: 20px;
+      background: rgba(0,0,0,0.22);
+      border: 1px solid rgba(255,255,255,0.14);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      box-shadow: 0 18px 45px rgba(0,0,0,0.35);
+      display: grid;
+      gap: 14px;
+    }
+    .footer-brand{ font-weight: 900; letter-spacing: 0.4px; font-size: 18px; }
+    .footer-tag{ opacity: 0.85; line-height: 1.4; margin-top: 6px; }
+    .footer-links{ display:flex; gap:14px; flex-wrap:wrap; }
+    .footer-links a{
+      opacity: 0.92;
+      text-decoration:none;
+      border-bottom: 1px solid rgba(255,255,255,0.20);
+      padding-bottom: 2px;
+      transition: opacity 160ms ease, border-color 160ms ease;
+    }
+    .footer-links a:hover{ opacity: 1; border-color: rgba(255,255,255,0.42); }
+    .footer-note{ opacity:0.75; font-size:13px; line-height:1.4; }
+  </style>
+</head>
+
+<body>
+  <div class="bg" aria-hidden="true"></div>
+  <div class="grain" aria-hidden="true"></div>
+
+  <div class="bg-video" aria-hidden="true">
+    <video autoplay muted loop playsinline preload="metadata" tabindex="-1" aria-hidden="true" src="../background-video.mp4"></video>
+  </div>
+
+  <nav class="top-pills" aria-label="Quick links">
+    <a class="pill" href="/">Home</a>
+    <a class="pill" href="/celebrity-fantasy/">Start</a>
+    <a class="pill" href="/terms/">Terms</a>
+  </nav>
+
+  <main>
+    <section class="hero" aria-label="Privacy policy hero">
+      <div class="hero-anim" aria-hidden="true"></div>
+      <div class="hero-inner">
+        <h1 class="hero-title">Privacy Policy</h1>
+        <p class="hero-sub">
+          famequizzers uses analytics and stores quiz responses to improve the site. We avoid direct identity when we can.
+          This page explains what we collect, why, and your choices.
+        </p>
+      </div>
+    </section>
+
+    <section class="wrap" aria-label="Privacy policy content">
+      <div class="wrap-inner">
+
+        <div class="glass">
+          <h2>Effective date</h2>
+          <p>
+            This Privacy Policy is effective as of <strong><span id="effectiveDate">2026-01-05</span></strong>.
+          </p>
+          <p class="meta">
+            If you change what you collect (new vendors, login, email capture, etc.), update this page.
+          </p>
+        </div>
+
+        <div class="glass">
+          <h2>What we collect</h2>
+          <p>
+            famequizzers collects two broad categories of data:
+          </p>
+          <ul>
+            <li><strong>Analytics data</strong> via Google Analytics (traffic, page views, device/browser info, approximate location, referral sources, and on-site behavior depending on your Analytics configuration).</li>
+            <li><strong>Quiz interaction data</strong> that you submit while taking quizzes (for example: selected answers, quiz outcomes/scores, the quiz/page you interacted with, timestamps, and a randomly generated user ID).</li>
+          </ul>
+          <div class="note">
+            <strong>Important:</strong> the user ID is generated randomly and is intended to be pseudonymous (not your real name). We do not require you to create an account to take quizzes.
+          </div>
+        </div>
+
+        <div class="glass">
+          <h2>Random user IDs (pseudonymous identifiers)</h2>
+          <p>
+            We generate a random identifier (a “user ID”) to connect multiple quiz events together (example: <code>u_8f3a... </code>).
+            This helps us understand things like completion rates, which quizzes are confusing, and what people actually use.
+          </p>
+          <p>
+            This ID is not meant to identify you personally. However, any identifier that persists over time can still be considered
+            “personal data” in some jurisdictions because it can single out a browser or device.
+          </p>
+        </div>
+
+        <div class="glass">
+          <h2>How quiz responses are stored</h2>
+          <p>
+            Quiz responses and related metadata (including random IDs and timestamps) are sent to a Google Apps Script endpoint and stored
+            in a Google Workspace environment (typically a Google Sheet or database-like storage you control).
+          </p>
+          <p class="meta">
+            Data fields commonly include: user ID, quiz name/page, selected options, result/outcome, timestamp, and basic technical context.
+            Exact fields depend on your implementation.
+          </p>
+        </div>
+
+        <div class="glass">
+          <h2>What we do <em>not</em> intentionally collect</h2>
+          <ul>
+            <li>We do not require your real name, email, phone number, or address to take quizzes.</li>
+            <li>We do not ask for sensitive personal information (health, government IDs, etc.).</li>
+          </ul>
+          <div class="note">
+            <strong>Don’t type private info into free-text fields</strong> (if you add any). If you later add open-ended input, people will overshare. The internet is undefeated.
+          </div>
+        </div>
+
+        <div class="glass">
+          <h2>Why we collect data</h2>
+          <ul>
+            <li>To measure traffic and site performance (Google Analytics).</li>
+            <li>To improve quiz design (drop-off points, confusing questions, completion time).</li>
+            <li>To understand which topics people actually explore (so we build more of what works).</li>
+            <li>To prevent basic abuse/spam (rate limiting, unusual activity patterns).</li>
+          </ul>
+        </div>
+
+        <div class="glass">
+          <h2>Cookies and tracking technologies</h2>
+          <p>
+            Google Analytics may use cookies or similar technologies to measure usage. Depending on your configuration, Analytics may
+            also collect identifiers and signals that help measure repeat visits.
+          </p>
+          <p>
+            You can control cookies through your browser settings, and you can use browser tools/extensions that limit tracking.
+          </p>
+        </div>
+
+        <div class="glass">
+          <h2>Your choices</h2>
+          <ul>
+            <li><strong>Block/clear cookies:</strong> use your browser settings to clear site data and cookies.</li>
+            <li><strong>Limit tracking:</strong> use privacy tools (tracker blockers, “Do Not Track,” etc.).</li>
+            <li><strong>Stop using the site:</strong> if you don’t want your quiz interactions stored, don’t submit quiz answers.</li>
+          </ul>
+          <p class="meta">
+            If you later implement an opt-out toggle, consent banner, or “delete my data” form, document it here.
+          </p>
+        </div>
+
+        <div class="glass">
+          <h2>Data retention</h2>
+          <p>
+            We keep analytics and quiz interaction data for as long as it is useful for site improvement, security, or reporting,
+            unless a shorter retention period is configured in Google Analytics or in our storage.
+          </p>
+          <p class="meta">
+            Best practice: set a retention window (example: 14–26 months) and stick to it.
+          </p>
+        </div>
+
+        <div class="glass">
+          <h2>Sharing and third parties</h2>
+          <p>
+            We use third-party services to run and measure the site, including:
+          </p>
+          <ul>
+            <li><strong>Google Analytics</strong> (site usage measurement)</li>
+            <li><strong>Google Apps Script / Google Workspace</strong> (collecting and storing quiz events)</li>
+          </ul>
+          <p>
+            We do not sell your personal information.
+          </p>
+        </div>
+<div class="glass">
+  <h2>Affiliate links</h2>
+  <p>
+    Some pages on famequizzers may include affiliate links. If you click one of these links
+    and take an action (such as signing up for a service or making a purchase),
+    the site may earn a small commission at no additional cost to you.
+  </p>
+  <p>
+    Affiliate relationships do <strong>not</strong> influence quiz questions, results,
+    outcomes, or recommendations. Quizzes are designed as exploratory thought experiments,
+    not marketing funnels.
+  </p>
+  <div class="note">
+    <strong>In short:</strong> affiliate links help support the project, but they do not
+    change how quizzes work or what results you see.
+  </div>
+</div>
+
+        <div class="glass">
+          <h2>Security</h2>
+          <p>
+            We use reasonable measures to protect stored data, but no internet system is perfect.
+            If you’re looking for a magical guarantee, please consult a wizard.
+          </p>
+        </div>
+
+        <div class="glass">
+          <h2>Children’s privacy</h2>
+          <p>
+            famequizzers is intended for a general audience. If you are a parent/guardian and believe a child has submitted personal
+            information, you can contact the site owner to request removal.
+          </p>
+        </div>
+
+        <div class="glass">
+          <h2>Changes to this policy</h2>
+          <p>
+            We may update this Privacy Policy as the site evolves. When we do, we will update the “Effective date” at the top.
+          </p>
+        </div>
+
+        <div class="glass">
+          <h2>Contact</h2>
+          <p>
+            If you add a contact method (email or form), put it here. For now:
+          </p>
+          <p class="meta">
+            Site owner contact: <code>[add-email-or-contact-link]</code>
+          </p>
+        </div>
+
+      </div>
+    </section>
+
+    <footer class="site-footer" aria-label="Site footer">
+      <div class="footer-inner">
+        <div class="footer-left">
+          <div class="footer-brand">famequizzers</div>
+          <div class="footer-tag">A fun, slightly-too-honest mirror for celebrity attention.</div>
+        </div>
+
+        <div class="footer-links" aria-label="Footer links">
+          <a href="/">Home</a>
+          <a href="/celebrity-fantasy/">Start</a>
+          <a href="/terms/">Terms</a>
+        </div>
+
+        <div class="footer-note">
+          © <span id="y"></span> famequizzers. Not affiliated with any celebrity, paparazzi, or emotionally devastating comment section.
+        </div>
+      </div>
+
+      <script>
+        document.getElementById("y").textContent = new Date().getFullYear();
+        // Set effective date to today's date automatically (optional).
+        // If you'd rather manually control it, remove the next line.
+        document.getElementById("effectiveDate").textContent = new Date().toISOString().slice(0,10);
+      </script>
+    </footer>
+  </main>
+</body>
+</html>

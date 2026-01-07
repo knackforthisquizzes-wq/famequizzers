@@ -1,0 +1,205 @@
+// what-would-you-be-famous-for-quiz.js
+// (Quiz 2) What would people reduce you to?
+
+const obj = {
+  0: {
+    question: "People can’t summarize you accurately, so they pick the easiest headline. It’s usually:",
+    options: [
+      ["“They’re ridiculously good at that one thing.”", ["Craft", "Admiration", "Fixation"]],
+      ["“They’re… a lot (in the best way). You have to experience them.”", ["Aura", "Fixation", "Admiration"]],
+      ["“They always say the thing everyone else is thinking.”", ["Conviction", "Debate", "Admiration"]],
+      ["“Remember when that happened?”", ["Moment", "Fixation", "Misunderstood"]],
+      ["“Yeah… people have opinions about them.”", ["Controversy", "Debate", "Fixation"]]
+    ]
+  },
+
+  1: {
+    question: "If strangers had one clip of you and nothing else, you’d want it to show:",
+    options: [
+      ["Competence. Proof. Something unmistakable.", ["Craft", "Admiration"]],
+      ["Presence. Vibe. The “who IS that?” factor.", ["Aura", "Fixation"]],
+      ["Clarity. A point that lands clean.", ["Conviction", "Debate"]],
+      ["A weird, human moment that people replay.", ["Moment", "Fixation"]],
+      ["A bold take that splits the room.", ["Controversy", "Debate"]]
+    ]
+  },
+
+  2: {
+    question: "Compliments feel best when they sound like:",
+    options: [
+      ["“You’re the real deal.”", ["Craft", "Admiration"]],
+      ["“You’re iconic.”", ["Aura", "Admiration", "Fixation"]],
+      ["“You said it perfectly.”", ["Conviction", "Admiration", "Debate"]],
+      ["“That moment was everything.”", ["Moment", "Admiration"]],
+      ["“You’re fearless… or chaotic. Not sure.”", ["Controversy", "Debate", "Misunderstood"]]
+    ]
+  },
+
+  3: {
+    question: "The fastest way people would misread you is by assuming you’re:",
+    options: [
+      ["A natural genius at everything (lol, no).", ["Craft", "Misunderstood"]],
+      ["Cold or arrogant (I’m just private).", ["Aura", "Misunderstood"]],
+      ["Mad at everyone (I’m just direct).", ["Conviction", "Misunderstood", "Debate"]],
+      ["Trying to be viral (it was accidental).", ["Moment", "Misunderstood"]],
+      ["A villain (I’m just not sugary).", ["Controversy", "Misunderstood", "Debate"]]
+    ]
+  },
+
+  4: {
+    question: "At scale, the thing people would quote back at you the most is:",
+    options: [
+      ["Your work. Receipts. Numbers. Results.", ["Craft", "Fixation"]],
+      ["Your tone. Your look. Your micro-expressions.", ["Aura", "Fixation"]],
+      ["Your exact words — people nitpicking and remixing them.", ["Conviction", "Debate", "Fixation"]],
+      ["That one story. That one incident. That one day.", ["Moment", "Fixation"]],
+      ["The “wait, did they really say that?” moment (forever).", ["Controversy", "Debate", "Fixation"]]
+    ]
+  },
+
+  5: {
+    question: "If your name started trending right now, you’d assume it’s because:",
+    options: [
+      ["You dropped something impressive and it spread.", ["Craft", "Admiration"]],
+      ["People got obsessed with your vibe and aesthetic.", ["Aura", "Fixation"]],
+      ["You said something that hit a nerve (on purpose).", ["Conviction", "Debate"]],
+      ["Something happened and people latched on.", ["Moment", "Misunderstood"]],
+      ["You got pulled into a messy situation (fair or not).", ["Controversy", "Debate", "Misunderstood"]]
+    ]
+  },
+
+  6: {
+    question: "Which kind of public memory feels most likely (not most flattering)?",
+    options: [
+      ["“They were exceptional at what they did.”", ["Craft", "Admiration"]],
+      ["“They had that rare aura.”", ["Aura", "Admiration"]],
+      ["“They stood for something, loudly.”", ["Conviction", "Debate"]],
+      ["“They were the person from that moment.”", ["Moment", "Fixation"]],
+      ["“They were always in the conversation.”", ["Controversy", "Debate", "Fixation"]]
+    ]
+  }
+};
+
+// Fame-native tags
+const tags = {
+  // Primary outcomes: what you’re "known for"
+  Craft: 0,        // skill / excellence
+  Aura: 0,         // personality / vibe
+  Conviction: 0,   // belief / stance
+  Moment: 0,       // event / story
+  Controversy: 0,  // discourse / conflict
+
+  // Secondary modifiers: the flavor of attention
+  Admiration: 0,
+  Debate: 0,
+  Fixation: 0,
+  Misunderstood: 0
+};
+
+function interpretResults() {
+  // ----- pick dominant "KNOWN FOR" -----
+  const fameKeys = ["Craft", "Aura", "Conviction", "Moment", "Controversy"];
+  let top = fameKeys[0];
+  fameKeys.forEach(k => {
+    if (tags[k] > tags[top]) top = k;
+  });
+
+  // ----- axes: Admiration vs Debate, Fixation vs Misunderstood -----
+  const totalQuestions = 7;
+
+  const admirationScore = tags.Admiration - tags.Debate;          // approx -7 → +7
+  const clarityScore = tags.Fixation - tags.Misunderstood;        // approx -7 → +7
+
+  let admirationPct = Math.round(((admirationScore + totalQuestions) / (totalQuestions * 2)) * 100);
+  let clarityPct = Math.round(((clarityScore + totalQuestions) / (totalQuestions * 2)) * 100);
+
+  admirationPct = Math.max(0, Math.min(admirationPct, 100));
+  clarityPct = Math.max(0, Math.min(clarityPct, 100));
+
+  // ----- style adjective (shareable, no % shown) -----
+  const isAdmired = admirationPct >= 60;
+  const isClear = clarityPct >= 60;
+
+  let style;
+  if (isAdmired && isClear) style = "Celebrated";
+  else if (isAdmired && !isClear) style = "Misread";
+  else if (!isAdmired && isClear) style = "Spicy";
+  else style = "Debated";
+
+  const knownForNames = {
+    Craft: "Skill",
+    Aura: "Presence",
+    Conviction: "Belief",
+    Moment: "Moment",
+    Controversy: "Chaos"
+  };
+
+  const personaTitle = `${style} ${knownForNames[top]}`;
+
+  const knownForBlurb = {
+    Craft: "People remember you for skill that shows. Not hype — proof.",
+    Aura: "People remember you for the vibe you leave in a room. You become a reference point.",
+    Conviction: "People remember you for your point of view. You don’t soften every edge for applause.",
+    Moment: "People remember you for a specific scene. One chapter becomes the headline.",
+    Controversy: "People remember you for being a conversation starter — even on your quiet days."
+  }[top];
+
+  const admirationTone =
+    admirationPct >= 70 ? "admired" :
+    admirationPct >= 55 ? "mostly-admired" :
+    admirationPct >= 45 ? "mixed" :
+    "debated";
+
+  const clarityTone =
+    clarityPct >= 70 ? "fixated" :
+    clarityPct >= 55 ? "sticky" :
+    clarityPct >= 45 ? "split" :
+    "misread";
+
+  const admirationPhrase = {
+    admired: "Your attention leans applause-first. People want to credit you, not argue you.",
+    "mostly-admired": "Most people like you — a smaller, louder slice tries to box you in.",
+    mixed: "You get praise and pushback in the same breath. Depends who’s watching.",
+    debated: "Your attention leans debate-first. People don’t just watch — they react."
+  }[admirationTone];
+
+  const clarityPhrase = {
+    fixated: "The memory is sticky. People replay you, quote you, and build little legends out of details.",
+    sticky: "You leave a strong imprint. Even small moments get saved and reshared.",
+    split: "Some people fixate, others misread. Same signal, different stories.",
+    misread: "You get misread fast. People fill in motives you didn’t have."
+  }[clarityTone];
+
+  const para1 = `${knownForBlurb} ${admirationPhrase} ${clarityPhrase}`;
+
+  const forwardHook = {
+    Craft: "Curveball: once you’re the “standard,” everyone expects the standard every time.",
+    Aura: "Curveball: when people think they “get” you, they act weirdly confident about it.",
+    Conviction: "Curveball: a strong point of view turns into a label really fast.",
+    Moment: "Curveball: one scene can eclipse everything else for a while.",
+    Controversy: "Curveball: the internet loves a hot take and hates a quiet day."
+  }[top];
+
+  const para2 = `${forwardHook} Next up: how fame finds you — and what the first wave looks like.`;
+
+  const description = `${para1}<br><br>${para2}`.trim();
+
+  const colorByKnownFor = {
+    Craft: "rgb(0, 170, 140)",
+    Aura: "rgb(170, 120, 220)",
+    Conviction: "rgb(90, 120, 200)",
+    Moment: "rgb(200, 170, 90)",
+    Controversy: "rgb(200, 90, 90)"
+  };
+
+  // Reset tags for next run
+  Object.keys(tags).forEach(k => (tags[k] = 0));
+
+  return {
+    title: personaTitle,
+    description,
+    color: colorByKnownFor[top] || "rgb(90, 120, 200)"
+  };
+}
+
+const quizTitle = "What Fame Remembers";

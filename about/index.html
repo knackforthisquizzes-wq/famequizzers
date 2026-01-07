@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About famequizzers — Why We Built a Fame Simulator in Quiz Form</title>
+  <meta name="description" content="famequizzers is a structured set of quizzes exploring celebrity attention as a system: fantasy, exposure, pressure, power, and long-term outcomes." />
+  <link rel="canonical" href="https://famequizzers.com/about/" />
+  <meta name="robots" content="index, follow" />
+
+  <!-- Open Graph -->
+  <meta property="og:site_name" content="famequizzers" />
+  <meta property="og:title" content="About famequizzers" />
+  <meta property="og:description" content="A clean, slightly-unhinged guide to fame as a system — told through quizzes." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://famequizzers.com/about/" />
+
+  <link href="https://fonts.googleapis.com/css2?family=Passero+One&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet" />
+
+  <style>
+    :root{
+      --text:#fff;
+      --muted: rgba(255,255,255,0.86);
+      --border: rgba(255,255,255,0.20);
+      --border2: rgba(255,255,255,0.32);
+      --shadow: rgba(0,0,0,0.55);
+    }
+
+    *{ box-sizing:border-box; }
+    html, body{ height:100%; }
+    body{
+      margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+      color: var(--text);
+      background:#000;
+      overflow-x:hidden;
+    }
+    a{ color: inherit; }
+
+    /* ====== BACKGROUND (match home) ====== */
+    .bg{
+      position: fixed;
+      inset: 0;
+      z-index: -3;
+      background:
+        linear-gradient(180deg, rgba(0,0,0,0.55), rgba(0,0,0,0.78)),
+        url("assets/bg.jpg") center/cover no-repeat;
+    }
+    .grain{
+      position: fixed;
+      inset: 0;
+      z-index: -2;
+      pointer-events: none;
+      background-image: radial-gradient(rgba(255,255,255,0.06) 1px, transparent 1px);
+      background-size: 3px 3px;
+      opacity: 0.08;
+      mix-blend-mode: overlay;
+    }
+    .bg-video{
+      position: fixed;
+      inset: 0;
+      z-index: -1;
+      opacity: 0.10;
+      pointer-events: none;
+    }
+    .bg-video video{
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    main{
+      min-height: 100vh;
+    }
+
+    /* ====== TOP PILLS ====== */
+    .top-pills{
+      position: fixed;
+      top: 14px;
+      right: 14px;
+      z-index: 50;
+
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+
+      padding: 8px;
+      border-radius: 18px;
+
+      background: rgba(0,0,0,0.18);
+      border: 1px solid rgba(255,255,255,0.14);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      box-shadow: 0 18px 45px rgba(0,0,0,0.35);
+    }
+    .pill{
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 9px 12px;
+      border-radius: 999px;
+
+      font-weight: 800;
+      font-size: 13px;
+      letter-spacing: 0.2px;
+
+      color: rgba(255,255,255,0.95);
+      text-decoration: none;
+
+      background: rgba(255,255,255,0.10);
+      border: 1px solid rgba(255,255,255,0.18);
+
+      transition: transform 160ms ease, border-color 160ms ease, background 160ms ease;
+      user-select:none;
+    }
+    .pill:hover{
+      transform: translateY(-2px);
+      border-color: rgba(255,255,255,0.34);
+      background: rgba(255,255,255,0.14);
+    }
+    @media (max-width: 520px){
+      .top-pills{
+        top: 10px;
+        right: 10px;
+        left: 10px;
+        justify-content: center;
+      }
+    }
+
+    /* ====== HERO ====== */
+    .hero{
+      position: relative;
+      padding: clamp(58px, 7vw, 110px) 20px 26px;
+      overflow: hidden;
+    }
+
+    .hero-anim{
+      position:absolute;
+      inset:0;
+      pointer-events:none;
+      z-index:0;
+    }
+    .hero-anim::before{
+      content:"";
+      position:absolute;
+      inset:-45% -30%;
+      background:
+        radial-gradient(circle at 25% 25%, rgba(255,255,255,0.12), transparent 55%),
+        radial-gradient(circle at 70% 40%, rgba(0,255,221,0.08), transparent 60%);
+      transform: rotate(10deg);
+      animation: drift 9s ease-in-out infinite alternate;
+      opacity: 0.7;
+    }
+    @keyframes drift{
+      from{ transform: translate3d(-2%, -1%, 0) rotate(10deg); }
+      to{ transform: translate3d(2%, 1%, 0) rotate(14deg); }
+    }
+
+    .hero-inner{
+      position: relative;
+      z-index: 1;
+      max-width: 980px;
+      margin: 0 auto;
+      text-align: center;
+    }
+    .hero-title{
+      margin:0;
+      font-size: clamp(40px, 6vw, 74px);
+      line-height:1.05;
+      letter-spacing:0.4px;
+      text-shadow: 0 12px 30px rgba(0,0,0,0.55);
+      font-family: "Passero One", system-ui, sans-serif;
+      font-weight: 400;
+    }
+    .hero-sub{
+      margin: 14px auto 0;
+      max-width: 62ch;
+      font-size: clamp(16px, 2vw, 20px);
+      opacity: 0.92;
+      text-shadow: 0 10px 25px rgba(0,0,0,0.55);
+      font-family: "Roboto", system-ui, sans-serif;
+    }
+    .hero-cta{
+      margin-top: 20px;
+      display:flex;
+      gap: 12px;
+      justify-content:center;
+      flex-wrap: wrap;
+    }
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      padding: 12px 16px;
+      border-radius: 14px;
+      text-decoration:none;
+      font-weight: 800;
+      border: 1px solid var(--border);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      transition: transform 180ms ease, border-color 180ms ease, background 180ms ease;
+      user-select:none;
+    }
+    .btn.primary{ background: rgba(255,255,255,0.14); }
+    .btn.ghost{ background: rgba(0,0,0,0.18); }
+    .btn:hover{
+      transform: translateY(-2px);
+      border-color: var(--border2);
+    }
+
+    /* ====== CONTENT WRAPPER ====== */
+    .wrap{
+      padding: 10px 20px 30px;
+    }
+    .wrap-inner{
+      max-width: 980px;
+      margin: 0 auto;
+      display: grid;
+      gap: 18px;
+    }
+
+    /* ====== PEARL PANELS (match the vibe of pearl cards) ====== */
+    .pearl{
+      border-radius: 26px;
+      border: 1px solid rgba(255,255,255,0.55);
+
+      background:
+        radial-gradient(140% 160% at 18% 12%,
+          rgba(255,255,255,0.96),
+          rgba(245,245,245,0.92) 38%,
+          rgba(235,235,238,0.88) 70%,
+          rgba(255,255,255,0.90) 100%),
+        linear-gradient(120deg,
+          rgba(180, 255, 245, 0.22),
+          rgba(255, 205, 245, 0.12),
+          rgba(190, 215, 255, 0.18),
+          rgba(255, 255, 255, 0.00) 70%);
+
+      box-shadow:
+        0 22px 70px rgba(0,0,0,0.38),
+        0 2px 0 rgba(255,255,255,0.58) inset;
+
+      position: relative;
+      overflow: hidden;
+      padding: 20px 20px 18px;
+      color: rgba(10,10,16,0.88);
+      font-family: "Roboto", system-ui, sans-serif;
+    }
+
+    .pearl::before{
+      content:"";
+      position:absolute;
+      inset:-45% -35%;
+      background:
+        radial-gradient(circle at 18% 22%, rgba(255,255,255,0.70), transparent 55%),
+        radial-gradient(circle at 60% 35%, rgba(170,255,245,0.20), transparent 60%),
+        radial-gradient(circle at 35% 70%, rgba(255,200,245,0.14), transparent 65%),
+        linear-gradient(115deg, transparent 35%, rgba(255,255,255,0.18), transparent 65%);
+      transform: rotate(10deg);
+      opacity: 0.55;
+      pointer-events:none;
+      mix-blend-mode: screen;
+    }
+
+    .pearl h2{
+      margin: 0;
+      font-size: 22px;
+      letter-spacing: 0.2px;
+      color: rgba(10,10,16,0.92);
+    }
+
+    .pearl p{
+      margin: 10px 0 0;
+      line-height: 1.55;
+      color: rgba(10,10,16,0.74);
+    }
+
+    .pearl .small{
+      font-size: 13px;
+      color: rgba(10,10,16,0.62);
+      margin-top: 10px;
+    }
+
+    /* ====== TWO COLUMN GRID FOR ABOUT CONTENT ====== */
+    .grid{
+      display: grid;
+      gap: 18px;
+    }
+    @media (min-width: 960px){
+      .grid{
+        grid-template-columns: 1.15fr 0.85fr;
+        align-items: start;
+      }
+    }
+
+    /* ====== LIST-LIKE ITEMS BUT NOT “BLOCK LIST” ====== */
+    .chips{
+      margin-top: 12px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .chip{
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 9px 12px;
+      border-radius: 999px;
+      background: rgba(0,0,0,0.06);
+      border: 1px solid rgba(0,0,0,0.10);
+      color: rgba(10,10,16,0.74);
+      font-weight: 700;
+      font-size: 13px;
+      user-select: none;
+    }
+    .dot{
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
+      background: rgba(10,10,16,0.55);
+      opacity: 0.6;
+    }
+
+    /* ====== DARK GLASS PANEL (for FAQ-ish bits) ====== */
+    .glass{
+      border-radius: 22px;
+      padding: 18px 18px 16px;
+      background: rgba(0,0,0,0.26);
+      border: 1px solid rgba(255,255,255,0.14);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      box-shadow: 0 18px 45px rgba(0,0,0,0.35);
+    }
+    .glass h2{
+      margin: 0;
+      font-size: 20px;
+      text-shadow: 0 10px 25px rgba(0,0,0,0.55);
+    }
+    .glass p{
+      margin: 10px 0 0;
+      opacity: 0.9;
+      line-height: 1.55;
+      text-shadow: 0 10px 25px rgba(0,0,0,0.55);
+    }
+
+    /* ====== FOOTER ====== */
+    .site-footer{ padding: 26px 20px 40px; }
+    .footer-inner{
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 18px 18px 16px;
+      border-radius: 20px;
+      background: rgba(0,0,0,0.22);
+      border: 1px solid rgba(255,255,255,0.14);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      box-shadow: 0 18px 45px rgba(0,0,0,0.35);
+      display: grid;
+      gap: 14px;
+    }
+    .footer-brand{
+      font-weight: 900;
+      letter-spacing: 0.4px;
+      font-size: 18px;
+    }
+    .footer-tag{ opacity: 0.85; line-height: 1.4; margin-top: 6px; }
+    .footer-links{ display:flex; gap:14px; flex-wrap:wrap; }
+    .footer-links a{
+      opacity: 0.92;
+      text-decoration:none;
+      border-bottom: 1px solid rgba(255,255,255,0.20);
+      padding-bottom: 2px;
+      transition: opacity 160ms ease, border-color 160ms ease;
+    }
+    .footer-links a:hover{ opacity: 1; border-color: rgba(255,255,255,0.42); }
+    .footer-note{ opacity:0.75; font-size:13px; line-height:1.4; }
+  </style>
+</head>
+
+<body>
+  <div class="bg" aria-hidden="true"></div>
+  <div class="grain" aria-hidden="true"></div>
+
+  <div class="bg-video" aria-hidden="true">
+    <video autoplay muted loop playsinline preload="metadata" tabindex="-1" aria-hidden="true" src="../background-video.mp4"></video>
+  </div>
+
+  <nav class="top-pills" aria-label="Quick links">
+    <a class="pill" href="/">Home</a>
+    <a class="pill" href="/celebrity-fantasy/">Start</a>
+    <a class="pill" href="/privacy/">Privacy</a>
+    <a class="pill" href="/terms/">Terms</a>
+  </nav>
+
+  <main>
+    <section class="hero" aria-label="About famequizzers">
+      <div class="hero-anim" aria-hidden="true"></div>
+
+      <div class="hero-inner">
+        <h1 class="hero-title">About famequizzers</h1>
+        <p class="hero-sub">
+          Fame isn’t a crown. It’s a social force. This site turns that force into a structured, surprisingly honest set of quizzes.
+        </p>
+
+        <div class="hero-cta">
+          <a class="btn primary" href="/celebrity-fantasy/">Start the Quizzes</a>
+          <a class="btn ghost" href="#why">Why this exists</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="wrap" id="why" aria-label="About content">
+      <div class="wrap-inner grid">
+
+        <article class="pearl">
+          <h2>What famequizzers is</h2>
+          <p>
+            famequizzers is a set of personality-style quizzes that let you roleplay your relationship with attention.
+            Not “are you talented?” — more like: <em>what happens to you when people watch</em>.
+          </p>
+          <p>
+            It starts playful (celebrity fantasy), then gradually gets real: exposure, narrative control, wear, influence,
+            and what you’d do when the spotlight stops feeling like a prize.
+          </p>
+          <div class="chips" aria-label="Core themes">
+            <span class="chip"><span class="dot"></span>Fantasy → Reality</span>
+            <span class="chip"><span class="dot"></span>Identity under attention</span>
+            <span class="chip"><span class="dot"></span>Pressure & control</span>
+            <span class="chip"><span class="dot"></span>Power & consequence</span>
+            <span class="chip"><span class="dot"></span>Legacy & fade-out</span>
+          </div>
+          <p class="small">
+            Translation: this is a fame simulator for your brain. No agents required. No tabloids included. (Mostly.)
+          </p>
+        </article>
+
+        <aside class="glass">
+          <h2>Quick expectations</h2>
+          <p><strong>It’s not a diagnosis.</strong> It’s a mirror. You’ll recognize patterns, not receive medical truth.</p>
+          <p><strong>It’s not celebrity gossip.</strong> It’s about you, your instincts, and your relationship with being perceived.</p>
+          <p><strong>It stays human.</strong> Fun first. Honest second. Existential dread sprinkled responsibly.</p>
+        </aside>
+
+        <article class="pearl">
+          <h2>Why it’s structured in phases</h2>
+          <p>
+            Real fame isn’t one moment — it’s a timeline. People don’t just “get famous.”
+            They adapt (or don’t) to a changing social environment that keeps asking for more.
+          </p>
+          <p>
+            The phases are designed like a gradual descent:
+            the shallow end of attention feels like glitter… until you realize glitter sticks to everything.
+          </p>
+        </article>
+
+        <aside class="glass">
+          <h2>What to do first</h2>
+          <p>
+            Start in Phase 1 if you want the fun cinematic version of you.
+            Start later if you’re curious about the parts most people avoid thinking about.
+          </p>
+          <div class="hero-cta" style="justify-content:flex-start; margin-top: 12px;">
+            <a class="btn primary" href="/celebrity-fantasy/">Phase 1</a>
+            <a class="btn ghost" href="/early-success/">Phase 2</a>
+          </div>
+        </aside>
+
+        <article class="pearl">
+          <h2>What this site believes (quietly)</h2>
+          <p>
+            People think fame is “more.” More love, more money, more doors opening.
+            In reality it’s also: more projection, more friction, more permanent screenshots.
+          </p>
+          <p>
+            So this project treats fame like a system — not a trophy — and lets you explore where you’d thrive,
+            where you’d bend, and where you’d want to disappear into a hoodie and a different zip code.
+          </p>
+        </article>
+
+        <aside class="glass">
+          <h2>Contact / notes</h2>
+          <p>
+            If you ever add a contact page, link it here. For now, this is intentionally simple:
+            a clean experience, fast pages, and the vibe of a velvet rope you can actually walk through.
+          </p>
+        </aside>
+
+      </div>
+    </section>
+
+    <footer class="site-footer" aria-label="Site footer">
+      <div class="footer-inner">
+        <div class="footer-left">
+          <div class="footer-brand">famequizzers</div>
+          <div class="footer-tag">A fun, slightly-too-honest mirror for celebrity attention.</div>
+        </div>
+
+        <div class="footer-links" aria-label="Footer links">
+          <a href="/">Home</a>
+          <a href="/celebrity-fantasy/">Start</a>
+          <a href="/privacy/">Privacy</a>
+          <a href="/terms/">Terms</a>
+        </div>
+
+        <div class="footer-note">
+          © <span id="y"></span> famequizzers. Not affiliated with any celebrity, paparazzi, or emotionally devastating comment section.
+        </div>
+      </div>
+
+      <script>
+        document.getElementById("y").textContent = new Date().getFullYear();
+      </script>
+    </footer>
+  </main>
+</body>
+</html>
