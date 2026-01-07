@@ -1,6 +1,6 @@
 // losing-fame-quiz.js
 // (Quiz 28) How would you feel when the spotlight moves on?
-// PHASE 6 — LONG-TERM OUTCOMES (deep water, full synthesis)
+// PHASE 6, LONG-TERM OUTCOMES (deep water, full synthesis)
 
 const obj = {
   0: {
@@ -36,10 +36,10 @@ const obj = {
   3: {
     question: "When someone recognizes you now, it feels:",
     options: [
-      ["Nice — a small callback, not my whole deal.", ["Grounding", "Stable", "Open"]],
-      ["Weirdly heavy — like an old headline resurfacing.", ["Loss", "IdentityShift", "Sensitive"]],
-      ["Irritating — people still act entitled.", ["Resentment", "Boundary", "BitterEdge"]],
-      ["Awkward — I’m not sure where it fits anymore.", ["Relief", "Detached", "Boundary"]]
+      ["Nice, a small callback, not my whole deal.", ["Grounding", "Stable", "Open"]],
+      ["Weirdly heavy, like an old headline resurfacing.", ["Loss", "IdentityShift", "Sensitive"]],
+      ["Irritating, people still act entitled.", ["Resentment", "Boundary", "BitterEdge"]],
+      ["Awkward, I’m not sure where it fits anymore.", ["Relief", "Detached", "Boundary"]]
     ]
   },
 
@@ -49,7 +49,7 @@ const obj = {
       ["No. I like the quiet version of life now.", ["Relief", "NeedsPrivacy", "Boundary"]],
       ["Yes. I miss it more than I say out loud.", ["Loss", "SeeksValidation", "Open"]],
       ["Yes, but on my terms. I’d control access.", ["Resentment", "Control", "Boundary"]],
-      ["Maybe — if it fit the life I have now.", ["Grounding", "Stable", "Resilient"]]
+      ["Maybe, if it fit the life I have now.", ["Grounding", "Stable", "Resilient"]]
     ]
   },
 
@@ -64,7 +64,7 @@ const obj = {
   },
 
   6: {
-    question: "If people remember you for one thing — and it’s not what you wanted — you:",
+    question: "If people remember you for one thing, and it’s not what you wanted, you:",
     options: [
       ["Let it go. That’s not mine to manage anymore.", ["Relief", "Detached", "Resilient"]],
       ["Feel disappointed. I wanted to be understood better.", ["Loss", "Sensitive", "IdentityShift"]],
@@ -168,11 +168,11 @@ function interpretResults() {
     Relief:
       "When the spotlight moves on, your first reaction is relief. Less noise, more room to live.",
     Loss:
-      "When the spotlight moves on, you feel a sense of loss — not because life is empty, but because being noticed used to be part of the atmosphere.",
+      "When the spotlight moves on, you feel a sense of loss, not because life is empty, but because being noticed used to be part of the atmosphere.",
     Resentment:
       "When the spotlight moves on, you feel resentment. It’s hard not to side-eye how quickly the crowd turns the page.",
     Grounding:
-      "When the spotlight moves on, you feel grounded. You treat it like a season — meaningful, but not permanent."
+      "When the spotlight moves on, you feel grounded. You treat it like a season, meaningful, but not permanent."
   }[top];
 
   const privacyPhrase =
@@ -187,13 +187,13 @@ function interpretResults() {
 
   const heatPhrase =
     heatPct >= 60
-      ? "The feelings stay spicy for a while — it takes time to cool off."
+      ? "The feelings stay spicy for a while, it takes time to cool off."
       : "You cool off faster and move forward with less lingering charge.";
 
   const para1 = `${outcomeBlurb} ${privacyPhrase} ${integratePhrase} ${heatPhrase}`;
 
   const para2 =
-    "Next up: what people would reduce you to in the end — the legacy compression problem.";
+    "Next up: what people would reduce you to in the end, the legacy compression problem.";
 
   const description = `${para1}<br><br>${para2}`.trim();
 

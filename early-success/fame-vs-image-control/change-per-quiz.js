@@ -26,7 +26,7 @@ const obj = {
     options: [
       ["Bigger reach. I can handle being misread.", ["Visibility", "TradeOff", "ThickSkin"]],
       ["Cleaner reputation. I’d rather be respected than viral.", ["Control", "Boundary", "Sensitive"]],
-      ["It depends — I’d push reach only if the message stays intact.", ["Control", "Balanced", "ThickSkin"]],
+      ["It depends, I’d push reach only if the message stays intact.", ["Control", "Balanced", "ThickSkin"]],
       ["Neither. I’d rather stay smaller and sane.", ["Boundary", "Sensitive"]]
     ]
   },
@@ -37,7 +37,7 @@ const obj = {
       ["Nothing. Misquotes are part of the game.", ["Visibility", "ThickSkin"]],
       ["That it changes what people think I stand for.", ["Control", "Sensitive"]],
       ["That I’ll waste my life correcting strangers.", ["Boundary", "Balanced"]],
-      ["That it’s unfair — and I’ll eventually snap.", ["Sensitive", "TradeOff", "Control"]]
+      ["That it’s unfair, and I’ll eventually snap.", ["Sensitive", "TradeOff", "Control"]]
     ]
   },
 
@@ -134,21 +134,21 @@ function interpretResults() {
   const resiliencePhrase =
     isResilient
       ? "Criticism doesn’t derail you easily. You shake it off, adjust your crown, and keep moving."
-      : "Feedback sticks. You notice tone, subtext, and unfairness — and it can drain your sparkle over time.";
+      : "Feedback sticks. You notice tone, subtext, and unfairness, and it can drain your sparkle over time.";
 
   const boundaryPhrase =
     isBoundary
       ? "Your instinct is to limit access. You’d rather be smaller than overexposed."
-      : "You’ll pay costs to stay in motion — more exposure, more engagement, more risk.";
+      : "You’ll pay costs to stay in motion, more exposure, more engagement, more risk.";
 
   const para1 = `${coreBlurb} ${resiliencePhrase} ${boundaryPhrase}`;
 
   const hook =
     top === "Visibility"
-      ? "The danger is becoming dependent on momentum — and accepting a version of you that isn’t quite real because it performs like a firework."
-      : "The danger is getting so protective that growth feels like a jump-scare — and you shrink your own reach just to stay perfectly intact.";
+      ? "The danger is becoming dependent on momentum, and accepting a version of you that isn’t quite real because it performs like a firework."
+      : "The danger is getting so protective that growth feels like a jump-scare, and you shrink your own reach just to stay perfectly intact.";
 
-  const para2 = `${hook} Keep going — the next quiz asks whether you’d rather be admired or impossible to ignore.`;
+  const para2 = `${hook} Keep going, the next quiz asks whether you’d rather be admired or impossible to ignore.`;
 
   const description = `${para1}<br><br>${para2}`.trim();
 

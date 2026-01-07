@@ -146,10 +146,10 @@ function interpretResults() {
 
   // ----- primary blurb -----
   const originBlurb = {
-    ViralHit: "Your fame arrives like a flash — one moment catches, and the internet repeats it until it sticks.",
+    ViralHit: "Your fame arrives like a flash, one moment catches, and the internet repeats it until it sticks.",
     SlowBurn: "Your fame accumulates. People discover you one by one, and the “everyone knows” moment shows up late.",
     Captured: "Your fame starts through other people’s lenses. You become a story before you get to narrate it.",
-    Launch: "Your fame begins by design. You pick timing, framing, and momentum — at least at first."
+    Launch: "Your fame begins by design. You pick timing, framing, and momentum, at least at first."
   }[topOrigin];
 
   // ----- map axes to phrases (no % shown) -----
@@ -174,7 +174,7 @@ function interpretResults() {
   const speedPhrase = {
     "very-fast": "It hits hard and early. You’re dealing with scale before you’ve even blinked.",
     fast: "It accelerates quickly once the first spark lands.",
-    mixed: "It starts uneven — slow, then sudden.",
+    mixed: "It starts uneven, slow, then sudden.",
     slow: "It builds over time. Less shock, more compounding."
   }[speedTone];
 
@@ -189,7 +189,7 @@ function interpretResults() {
     guarded: "You keep access tight. You’ll go quiet before you let the internet get too comfortable.",
     selective: "You share in controlled doses: enough to feel real, not enough to be easy to box in.",
     balanced: "You reveal some, hide some. You adjust depending on the moment.",
-    open: "You’re readable. The audience feels close to you fast — for better and for chaos."
+    open: "You’re readable. The audience feels close to you fast, for better and for chaos."
   }[privacyTone];
 
   const para1 = `${originBlurb} ${speedPhrase} ${agencyPhrase} ${privacyPhrase}`;

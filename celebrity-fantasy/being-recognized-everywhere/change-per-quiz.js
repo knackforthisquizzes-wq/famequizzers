@@ -57,7 +57,7 @@ const obj = {
     options: [
       ["Never getting to be ‘off’ in public again.", ["Invasive", "PrivacyFirst", "Boundary"]],
       ["People assuming they know you.", ["Awkward", "Sensitive", "Guarded"]],
-      ["Always being on camera — every awkward moment gets saved forever.", ["Destabilized", "PrivacyFirst", "Sensitive"]],
+      ["Always being on camera, every awkward moment gets saved forever.", ["Destabilized", "PrivacyFirst", "Sensitive"]],
       ["The intensity is worth it. I’d adapt.", ["Thrill", "Adaptable", "Open"]]
     ]
   },
@@ -151,10 +151,10 @@ function interpretResults() {
   const personaTitle = `${style} ${outcomeNames[top]}`;
 
   const outcomeBlurb = {
-    Thrill: "Losing anonymity would feel exciting — like stepping into a bigger, louder version of life.",
+    Thrill: "Losing anonymity would feel exciting, like stepping into a bigger, louder version of life.",
     Awkward: "Losing anonymity would feel socially awkward. You’d become extra aware of yourself in public.",
     Invasive: "Losing anonymity would feel infuriating. It’s the uninvited attention that would get old fast.",
-    Destabilized: "Losing anonymity would feel weirdly unreal. Not dramatic — just constantly disorienting."
+    Destabilized: "Losing anonymity would feel weirdly unreal. Not dramatic, just constantly disorienting."
   }[top];
 
   const opennessTone =
@@ -205,7 +205,7 @@ function interpretResults() {
     Destabilized: "The real downside: feeling like you’re always in a fishbowl, even on normal days."
   }[top];
 
-  const para2 = `${forwardHook} That’s the end of the Celebrity Fantasy arc — and the start of the real questions.`;
+  const para2 = `${forwardHook} That’s the end of the Celebrity Fantasy arc, and the start of the real questions.`;
 
   const description = `${para1}<br><br>${para2}`.trim();
 

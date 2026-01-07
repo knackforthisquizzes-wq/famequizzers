@@ -28,7 +28,7 @@ const obj = {
   2: {
     question: "If the audience wants “more of the thing,” you:",
     options: [
-      ["Give it to them — and raise the intensity.", ["Escalator", "ChasesSpike", "HighHeat"]],
+      ["Give it to them, and raise the intensity.", ["Escalator", "ChasesSpike", "HighHeat"]],
       ["Give it, but keep it sustainable.", ["Stabilizer", "Bounded", "LowHeat"]],
       ["Half-deliver. My heart isn’t in it.", ["Numb", "Dissociation", "LowHeat"]],
       ["Change direction even if it costs reach.", ["Reflective", "MeaningSeeking", "Recalibrate"]],
@@ -156,7 +156,7 @@ function interpretResults() {
   // ----- primary blurb -----
   const typeBlurb = {
     Escalator:
-      "When attention stops feeling special, you’re tempted to raise the stakes. You chase spikes, not because you’re shallow — because the system trains you to.",
+      "When attention stops feeling special, you’re tempted to raise the stakes. You chase spikes, not because you’re shallow, because the system trains you to.",
     Stabilizer:
       "When novelty fades, you build structure: boundaries, pacing, and a sustainable lane. You’d rather last than trend.",
     Numb:
@@ -164,11 +164,11 @@ function interpretResults() {
     Reflective:
       "When the rush fades, you start asking bigger questions. You’re willing to pivot, step back, or redefine success around meaning.",
     Irritated:
-      "When attention becomes routine, it starts to feel like constant friction. You notice entitlement, demands, and the emotional tax — and resentment builds."
+      "When attention becomes routine, it starts to feel like constant friction. You notice entitlement, demands, and the emotional tax, and resentment builds."
   }[top];
 
   const heatPhrase =
-    heatPct >= 70 ? "Your attention tolerance runs hot — you can live in the blast radius, but it pulls you toward bigger moments." :
+    heatPct >= 70 ? "Your attention tolerance runs hot, you can live in the blast radius, but it pulls you toward bigger moments." :
     heatPct >= 55 ? "You can handle visibility, but repeated exposure pushes you toward either boundaries or escalation." :
     "You prefer lower heat. Sustained visibility drains you faster than it energizes you.";
 
@@ -178,11 +178,11 @@ function interpretResults() {
     "Your risk is drift: reactions, impulses, and platform feedback quietly steering your choices.";
 
   const watchOut = {
-    Escalator: "Watch-out: escalation works until it doesn’t — and the crash is usually social, financial, or psychological.",
-    Stabilizer: "Watch-out: stability can look like boredom — and boredom is when people make bad fame decisions.",
+    Escalator: "Watch-out: escalation works until it doesn’t, and the crash is usually social, financial, or psychological.",
+    Stabilizer: "Watch-out: stability can look like boredom, and boredom is when people make bad fame decisions.",
     Numb: "Watch-out: numbness can turn into identity fog. You’re there, but not fully living it.",
-    Reflective: "Watch-out: meaning-pivots can confuse audiences — but they’re often necessary for survival.",
-    Irritated: "Watch-out: resentment makes you leak contempt — and the audience feels it even when you don’t say it."
+    Reflective: "Watch-out: meaning-pivots can confuse audiences, but they’re often necessary for survival.",
+    Irritated: "Watch-out: resentment makes you leak contempt, and the audience feels it even when you don’t say it."
   }[top];
 
   const para1 = `${typeBlurb} ${heatPhrase} ${stabilityPhrase}`;

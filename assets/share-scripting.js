@@ -3,7 +3,7 @@
   "use strict";
 
   const SHARE_URL = "https://knackforthis.com/trades/";
-  const SHARE_TITLE = "KnackForThis — Trade Fit Diagnostics";
+  const SHARE_TITLE = "KnackForThis, Trade Fit Diagnostics";
   const SHARE_TEXT = "Reality-based trade fit diagnostics to help you decide before committing.";
 
   const BUTTON_ID = "share-knackforthis";
@@ -61,7 +61,7 @@
         });
         return;
       } catch {
-        // User canceled or unsupported — fall back
+        // User canceled or unsupported, fall back
       }
     }
 

@@ -39,7 +39,7 @@ const obj = {
   3: {
     question: "Your relationship to influence changes when fame explodes. You:",
     options: [
-      ["Lean in — influence is a tool.", ["Expansion", "PowerComfort"]],
+      ["Lean in, influence is a tool.", ["Expansion", "PowerComfort"]],
       ["Handle it delicately. It’s a sharp accessory.", ["Cautious", "Ethics"]],
       ["Formalize it through roles, systems, and teams.", ["Managerial", "Control"]],
       ["Feel detached from it. It doesn’t feel real.", ["Impostor", "Dislocation"]],
@@ -156,7 +156,7 @@ function interpretResults() {
 
   const typeBlurb = {
     Expansion:
-      "When fame spikes, you grow with it. The scale is intense — but the momentum feels electric.",
+      "When fame spikes, you grow with it. The scale is intense, but the momentum feels electric.",
     Cautious:
       "You slow the machine. You’d rather stay elegant and intact than let the moment chew you up.",
     Managerial:

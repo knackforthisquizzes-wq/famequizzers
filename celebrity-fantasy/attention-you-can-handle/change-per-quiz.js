@@ -65,7 +65,7 @@ const obj = {
   6: {
     question: "What breaks the “fun” feeling first for you?",
     options: [
-      ["Nothing — I’m built for consistent attention.", ["Endurance", "Energized"]],
+      ["Nothing, I’m built for consistent attention.", ["Endurance", "Energized"]],
       ["The repetition. Same cycles, same questions, same takes.", ["Balanced", "NeedsRecovery"]],
       ["The lack of privacy. I can’t breathe.", ["Guarded", "NeedsPrivacy"]],
       ["The criticism. Even small digs stack up.", ["ShortFuse", "ThinSkin", "Overloaded"]]
@@ -159,7 +159,7 @@ function interpretResults() {
 
   const outcomeBlurb = {
     Endurance: "The early attention stays fun longer for you. You can live in the spotlight without constantly wrestling your own vibe.",
-    Balanced: "Attention is fun in phases. You can handle it — but only with a rhythm and some recharge time built in.",
+    Balanced: "Attention is fun in phases. You can handle it, but only with a rhythm and some recharge time built in.",
     ShortFuse: "The fun burns fast. The sparkle turns into pressure once the novelty wears off.",
     Guarded: "Attention gets invasive quickly. The loss of privacy is what kills the fun first."
   }[top];
@@ -183,7 +183,7 @@ function interpretResults() {
     "low-stamina";
 
   const energyPhrase = {
-    energized: "You run hot in a good way — attention fuels you more than it drains you.",
+    energized: "You run hot in a good way, attention fuels you more than it drains you.",
     "mostly-energized": "You like attention, but too much input for too long will still cost you.",
     mixed: "Sometimes it’s energizing, sometimes it’s suffocating. Context matters.",
     Overloaded: "Your system maxes out fast. Too many eyes becomes too much noise."
@@ -206,7 +206,7 @@ function interpretResults() {
   const para1 = `${outcomeBlurb} ${energyPhrase} ${skinPhrase} ${staminaPhrase}`;
 
   const forwardHook = {
-    Endurance: "The real test isn’t the first wave — it’s whether you can stay real while being watched.",
+    Endurance: "The real test isn’t the first wave, it’s whether you can stay real while being watched.",
     Balanced: "The real test is consistency: can you stay visible without letting it take over your life?",
     ShortFuse: "The real test is the pivot: do you step back before you start hating the whole game?",
     Guarded: "The real test is access: once people feel entitled to you, what do you protect first?"

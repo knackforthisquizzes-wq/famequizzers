@@ -50,7 +50,7 @@ const obj = {
   4: {
     question: "How do you feel about “playing a role” publicly?",
     options: [
-      ["Fine. Everyone’s performing — I’d rather do it intentionally.", ["Curated", "Performance", "HighControl"]],
+      ["Fine. Everyone’s performing, I’d rather do it intentionally.", ["Curated", "Performance", "HighControl"]],
       ["Gross. If I’m acting, I’ll start disappearing.", ["Uncurated", "Authentic", "LowControl"]],
       ["I can do it for the work, not for my entire identity.", ["Adaptive", "MediumControl", "Authentic"]],
       ["I don’t mind performance, but I hate being predictable.", ["Uncurated", "Ambiguous", "Resistant"]],
@@ -73,10 +73,10 @@ const obj = {
     question: "The thing most likely to quietly change you over time is:",
     options: [
       ["Trying to stay consistent so the brand doesn’t break.", ["Curated", "IdentityErosion", "Performance"]],
-      ["Constant projection — people insisting they know who I am.", ["CrowdNarrative", "Entitlement", "Uncurated"]],
+      ["Constant projection, people insisting they know who I am.", ["CrowdNarrative", "Entitlement", "Uncurated"]],
       ["Audience feedback shaping what I say and don’t say.", ["Adaptive", "TestAndLearn", "IdentityErosion"]],
       ["Being misunderstood and having to decide whether to correct it.", ["Uncurated", "Misread", "Ambiguous"]],
-      ["The dopamine loop — numbers controlling my mood.", ["Reactive", "LeakRisk", "IdentityErosion"]]
+      ["The dopamine loop, numbers controlling my mood.", ["Reactive", "LeakRisk", "IdentityErosion"]]
     ]
   }
 };
@@ -158,7 +158,7 @@ function interpretResults() {
     Curated:
       "You’d rather be misunderstood less, even if it means becoming a deliberate version of yourself. You try to author your own myth.",
     Uncurated:
-      "You don’t want to become a character. You’d rather be messy and real than clean and marketable — even if it costs reach.",
+      "You don’t want to become a character. You’d rather be messy and real than clean and marketable, even if it costs reach.",
     Adaptive:
       "You’ll shape a persona, but you won’t freeze yourself in amber. You test what lands, keep what’s true, and adjust the rest.",
     Reactive:
@@ -182,7 +182,7 @@ function interpretResults() {
   }[controlTone];
 
   const personaPhrase = {
-    "persona-forward": "You’re comfortable with performance and branding as tools — even if they sometimes feel fake.",
+    "persona-forward": "You’re comfortable with performance and branding as tools, even if they sometimes feel fake.",
     "somewhat-persona": "You’ll use persona tactics when useful, but you still want the core to feel real.",
     "human-forward": "You’re allergic to acting. You want closeness and truth, even when it’s inconvenient."
   }[personaTone];
@@ -200,11 +200,11 @@ function interpretResults() {
     CrowdNarrative:
       "Risk: the crowd writing your lore so aggressively that your real self becomes irrelevant to your public self.",
     LeakRisk:
-      "Risk: emotional posting and reactive pivots — not because you’re unstable, but because the system is.",
+      "Risk: emotional posting and reactive pivots, not because you’re unstable, but because the system is.",
     Misread:
       "Risk: being clipped and simplified until you’re constantly deciding whether to correct people or let it rot.",
     Entitlement:
-      "Risk: people treating access to you like a subscription — and punishing you when you act like a person."
+      "Risk: people treating access to you like a subscription, and punishing you when you act like a person."
   }[topRisk];
 
   const para1 = `${stratBlurb} ${controlPhrase} ${personaPhrase}`;

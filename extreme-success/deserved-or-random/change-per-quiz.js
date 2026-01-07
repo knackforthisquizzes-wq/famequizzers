@@ -53,7 +53,7 @@ const obj = {
       ["I earned it. Full stop.", ["Earned", "Merit", "Control"]],
       ["I earned it, and luck opened doors.", ["Integrated", "Balanced", "Reality"]],
       ["It was timing + systems more than personal mythology.", ["LuckLean", "Reality", "Complex"]],
-      ["I’m not ‘more deserving’ — I just became the face.", ["Integrated", "Humility", "Reality"]],
+      ["I’m not ‘more deserving’, I just became the face.", ["Integrated", "Humility", "Reality"]],
       ["I’m done caring what the story is.", ["Detached", "Protected", "LowReactivity"]]
     ]
   },
@@ -62,7 +62,7 @@ const obj = {
     question: "When you think about ‘deserving’ success, you mostly feel:",
     options: [
       ["Bright pride. I did the work.", ["Earned", "Merit", "Grounded"]],
-      ["Pressure — like I have to keep proving it.", ["Earned", "Defensive", "Anxious"]],
+      ["Pressure, like I have to keep proving it.", ["Earned", "Defensive", "Anxious"]],
       ["Warm gratitude. It’s still surreal.", ["Integrated", "Humility", "Grounded"]],
       ["A raised eyebrow. The world rewards odd things.", ["LuckLean", "Reality", "Cynical"]],
       ["Distance. I don’t shop in that aisle anymore.", ["Detached", "Protected", "Balanced"]]
@@ -73,7 +73,7 @@ const obj = {
     question: "If your success was truly 50% random, what changes in you?",
     options: [
       ["Nothing. Craft is still craft.", ["Integrated", "Grounded", "Balanced"]],
-      ["I’d feel exposed — like I’m not ‘real’ enough.", ["Impostor", "Fragile", "Anxious"]],
+      ["I’d feel exposed, like I’m not ‘real’ enough.", ["Impostor", "Fragile", "Anxious"]],
       ["I’d feel lighter. Less moral weight, more ease.", ["LuckLean", "Relief", "Balanced"]],
       ["I’d double down on strategy and positioning.", ["Earned", "Control", "Strategy"]],
       ["I’d stop chasing approval entirely.", ["Detached", "LowReactivity", "Protected"]]
@@ -166,7 +166,7 @@ function interpretResults() {
     LuckLean:
       "You read the room like a blueprint: systems, timing, access. ‘Deserving’ feels like a story people add after the confetti.",
     Impostor:
-      "Luck-talk hits a tender spot. Not because you’re fake — because the story feels slippery, and you want it to feel solid.",
+      "Luck-talk hits a tender spot. Not because you’re fake, because the story feels slippery, and you want it to feel solid.",
     Detached:
       "You’ve stopped auditioning for the ‘proper’ narrative. People will talk; you’ll simply keep gliding."
   }[top];

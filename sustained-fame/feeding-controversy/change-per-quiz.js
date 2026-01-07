@@ -6,7 +6,7 @@ const obj = {
   0: {
     question: "You learn something “mildly controversial” would make you trend today. You:",
     options: [
-      ["Post it. Attention is attention — I can handle the sparkle-storm.", ["FuelUser", "HighHeat", "Relevance"]],
+      ["Post it. Attention is attention, I can handle the sparkle-storm.", ["FuelUser", "HighHeat", "Relevance"]],
       ["Don’t post it. Peace is worth more than reach (and my skin deserves silk).", ["PeaceKeeper", "LowHeat", "Integrity"]],
       ["Post a softer version. I’ll be strategic, not reckless.", ["Strategist", "MediumHeat", "Relevance"]],
       ["Post it, then act shocked at the backlash (for the drama).", ["Troll", "HighHeat", "Chaos"]],
@@ -28,7 +28,7 @@ const obj = {
   2: {
     question: "If controversy reliably boosts your career, you’d most likely:",
     options: [
-      ["Use it intentionally. It’s a tool — like a spotlight you can aim.", ["FuelUser", "Relevance", "HighHeat"]],
+      ["Use it intentionally. It’s a tool, like a spotlight you can aim.", ["FuelUser", "Relevance", "HighHeat"]],
       ["Refuse it. I don’t want to become that vibe.", ["PeaceKeeper", "Integrity", "LowHeat"]],
       ["Use it rarely, only when it’s about something real to me.", ["Strategist", "Integrity", "MediumHeat"]],
       ["Start leaning into it because it’s addictive.", ["Troll", "Dopamine", "HighHeat"]],
@@ -151,19 +151,19 @@ function interpretResults() {
 
   const typeBlurb = {
     FuelUser:
-      "You can treat backlash like fuel. Not because you’re villain-coded — because you can turn noise into momentum.",
+      "You can treat backlash like fuel. Not because you’re villain-coded, because you can turn noise into momentum.",
     PeaceKeeper:
       "You won’t trade your peace for reach. You’d rather be smaller and serene than bigger and scorched.",
     Strategist:
       "You’ll flirt with edges, but with guardrails. You manage controversy like fire: useful when contained, messy when loose.",
     Troll:
-      "You’re tempted to stir. Attention chaos can feel funny, powerful, and dangerously rewarding — until it stops being cute.",
+      "You’re tempted to stir. Attention chaos can feel funny, powerful, and dangerously rewarding, until it stops being cute.",
     Avoider:
       "You don’t want heat. Backlash feels like a threat, not entertainment, and your instinct is to retreat to safety."
   }[top];
 
   const heatPhrase =
-    heatPct >= 70 ? "You tolerate high heat. Outrage doesn’t scare you — you can ride it." :
+    heatPct >= 70 ? "You tolerate high heat. Outrage doesn’t scare you, you can ride it." :
     heatPct >= 55 ? "You can handle some heat, but it costs you if it becomes constant." :
     "You prefer low heat. Sustained backlash would drain you fast.";
 
@@ -174,7 +174,7 @@ function interpretResults() {
 
   const watchOut = {
     FuelUser: "Watch-out: once you learn backlash boosts you, it becomes hard to stop turning up the heat.",
-    PeaceKeeper: "Watch-out: avoiding all heat can make you fade out — and the algorithm doesn’t reward quiet elegance.",
+    PeaceKeeper: "Watch-out: avoiding all heat can make you fade out, and the algorithm doesn’t reward quiet elegance.",
     Strategist: "Watch-out: ‘managed heat’ still burns. You’re playing with a system that loves wildfire.",
     Troll: "Watch-out: chaos makes people stop trusting your sincerity. You become the bit.",
     Avoider: "Watch-out: retreat protects you, but it can shrink your world until you feel boxed in."

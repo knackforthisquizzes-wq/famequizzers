@@ -138,7 +138,7 @@ function interpretResults() {
   const personaTitle = `${style} ${knownForNames[top]}`;
 
   const knownForBlurb = {
-    Craft: "People remember you for competence that shows. Not potential — proof.",
+    Craft: "People remember you for competence that shows. Not potential, proof.",
     Aura: "People remember you for the vibe you leave in a room. You become a reference point.",
     Conviction: "People remember you for what you stand for. You don’t blur your edges to be liked.",
     Moment: "People remember you for a specific story. The internet turns one chapter into your cover.",
@@ -159,9 +159,9 @@ function interpretResults() {
 
   const admirationPhrase = {
     admired: "Your attention leans admiration-first. People want to credit you, not litigate you.",
-    "mostly-admired": "Most people like you — a smaller, louder slice tries to argue you into a box.",
+    "mostly-admired": "Most people like you, a smaller, louder slice tries to argue you into a box.",
     mixed: "You get praise and pushback in the same breath. Depends who’s watching.",
-    debated: "Your attention leans debate-first. People don’t just watch — they take positions."
+    debated: "Your attention leans debate-first. People don’t just watch, they take positions."
   }[admirationTone];
 
   const clarityPhrase = {
@@ -181,7 +181,7 @@ function interpretResults() {
     Controversy: "The real risk: the internet rewarding your heat and punishing your nuance."
   }[top];
 
-  const para2 = `${forwardHook} Keep going — the next quizzes map how fame finds you and how long it stays fun.`;
+  const para2 = `${forwardHook} Keep going, the next quizzes map how fame finds you and how long it stays fun.`;
 
   const description = `${para1}<br><br>${para2}`.trim();
 

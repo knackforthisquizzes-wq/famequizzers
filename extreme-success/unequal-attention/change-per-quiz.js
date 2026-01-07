@@ -18,7 +18,7 @@ const obj = {
     question: "The person gets bitter about it. You:",
     options: [
       ["Try to share credit publicly and privately.", ["Repair", "Empathy", "Fairness"]],
-      ["Get angry — they’re acting like you stole something.", ["Defensive", "Friction", "Boundary"]],
+      ["Get angry, they’re acting like you stole something.", ["Defensive", "Friction", "Boundary"]],
       ["Feel sad and distance yourself to avoid tension.", ["Avoidant", "Distance", "Loss"]],
       ["Over-explain the situation until it feels worse.", ["Anxious", "Rumination", "Repair"]],
       ["Detach. If they can’t handle it, that’s on them.", ["Detached", "Boundary", "Cold"]]
@@ -42,7 +42,7 @@ const obj = {
       ["Watching friends feel smaller next to you.", ["Guilt", "Empathy", "Loss"]],
       ["Feeling like you can’t enjoy wins without tension.", ["Guilt", "Unease", "Friction"]],
       ["Knowing you’ll be blamed no matter what.", ["Defensive", "Friction", "Boundary"]],
-      ["The isolation — nobody says the real thing out loud.", ["Dislocation", "Distance", "Unease"]],
+      ["The isolation, nobody says the real thing out loud.", ["Dislocation", "Distance", "Unease"]],
       ["Realizing attention is arbitrary and messy.", ["SystemRealist", "Detached"]]
     ]
   },
@@ -54,7 +54,7 @@ const obj = {
       ["Merit-based and measurable (even if harsh).", ["Merit", "Control", "Defensive"]],
       ["Focused on the work, not the person.", ["Integrity", "Balanced"]],
       ["Absorbed by you so others stay safer.", ["Protective", "Responsibility"]],
-      ["None of it matters — attention is a weather system.", ["Detached", "SystemRealist"]]
+      ["None of it matters, attention is a weather system.", ["Detached", "SystemRealist"]]
     ]
   },
 
@@ -65,7 +65,7 @@ const obj = {
       ["I try, but the system always simplifies.", ["Balanced", "SystemRealist"]],
       ["I accept that simplification is inevitable.", ["Detached", "SystemRealist"]],
       ["I worry about it constantly.", ["Anxious", "Rumination", "Guilt"]],
-      ["I treat credit like strategy — use it to stabilize relationships.", ["Strategic", "Responsibility", "Repair"]]
+      ["I treat credit like strategy, use it to stabilize relationships.", ["Strategic", "Responsibility", "Repair"]]
     ]
   },
 
@@ -74,7 +74,7 @@ const obj = {
     options: [
       ["‘Why you and not them?’", ["Bewildered", "Unease", "Guilt"]],
       ["‘You think you’re better than us now.’", ["Defensive", "Friction", "Boundary"]],
-      ["‘Don’t mention them — it’s your moment.’", ["Integrity", "Fairness", "Unease"]],
+      ["‘Don’t mention them, it’s your moment.’", ["Integrity", "Fairness", "Unease"]],
       ["‘If I got your attention, my life would change.’", ["Guilt", "Empathy", "Loss"]],
       ["‘Attention was never fair.’", ["Detached", "SystemRealist"]]
     ]
@@ -168,7 +168,7 @@ function interpretResults() {
     Guilt: "Uneven attention puts a shadow on the win. You feel the imbalance even if you didn’t create it.",
     Defensive: "You refuse to be the villain for the system. You’ll protect your name and your lane.",
     Detached: "You treat attention like weather: unpredictable, uneven, and not worth wrestling all day.",
-    Bewildered: "The concentration of attention feels weird and arbitrary — and that weirdness sticks with you."
+    Bewildered: "The concentration of attention feels weird and arbitrary, and that weirdness sticks with you."
   }[top];
 
   const repairPhrase = isRepairHigh
@@ -182,7 +182,7 @@ function interpretResults() {
   const riskLine = {
     Repair: "Watch-out: becoming the unofficial feelings concierge.",
     Guilt: "Watch-out: dimming your own shine to keep everyone comfortable.",
-    Defensive: "Watch-out: isolation — self-protection can read cold from the outside.",
+    Defensive: "Watch-out: isolation, self-protection can read cold from the outside.",
     Detached: "Watch-out: distance becoming a default, not a choice.",
     Bewildered: "Watch-out: getting stuck trying to make something ‘fair’ that won’t behave."
   }[top];

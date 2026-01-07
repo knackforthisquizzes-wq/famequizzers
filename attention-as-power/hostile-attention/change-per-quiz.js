@@ -1,10 +1,10 @@
 // hostile-attention-quiz.js
 // (Quiz 25) How do you react when attention turns hostile?
-// PHASE 5 — ATTENTION AS POWER (celebrity becomes force)
+// PHASE 5, ATTENTION AS POWER (celebrity becomes force)
 
 const obj = {
   0: {
-    question: "A wave of criticism hits. The comments aren’t just disagreement — they’re personal. You:",
+    question: "A wave of criticism hits. The comments aren’t just disagreement, they’re personal. You:",
     options: [
       ["Address it directly. I’m not letting rumors sit.", ["Confronter", "HighEngagement", "Control"]],
       ["Respond once, clearly, then stop engaging.", ["BoundarySetter", "MeasuredEngagement", "Control"]],
@@ -165,7 +165,7 @@ function interpretResults() {
   const para1 = outcomeBlurb;
 
   const forwardHook =
-    "That closes Phase 5 — attention as power. Next comes the aftermath: what prolonged visibility turns you into.";
+    "That closes Phase 5, attention as power. Next comes the aftermath: what prolonged visibility turns you into.";
 
   const description = `${para1}<br><br>${forwardHook}`;
 

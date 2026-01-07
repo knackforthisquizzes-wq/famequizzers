@@ -15,7 +15,7 @@ const obj = {
       ["A dip. Like something meaningful just went missing.", ["Attached", "Need", "Loss"]],
       ["Disorientation. I wouldn’t know what to do with the quiet.", ["Fused", "Need", "IdentityThreat"]],
       ["Curiosity. I’d see what I actually want without the noise.", ["Grounded", "ToolUser", "Reflection"]],
-      ["I’d feel dismissed — like I got edited out.", ["Attached", "Need", "EgoHit"]]
+      ["I’d feel dismissed, like I got edited out.", ["Attached", "Need", "EgoHit"]]
     ]
   },
 
@@ -35,7 +35,7 @@ const obj = {
     options: [
       ["I like being seen, but I don’t need it.", ["Grounded", "ToolUser", "Stable"]],
       ["I act like I don’t care, but I care a lot.", ["Attached", "Need", "Mask"]],
-      ["Attention feels weirdly necessary — I’m not proud of it.", ["Fused", "Need", "Honest"]],
+      ["Attention feels weirdly necessary, I’m not proud of it.", ["Fused", "Need", "Honest"]],
       ["I can take long breaks without feeling like I’m disappearing.", ["Grounded", "ToolUser", "Detachment"]],
       ["When I’m not seen, I feel underestimated.", ["Attached", "Need", "EgoHit"]]
     ]
@@ -47,7 +47,7 @@ const obj = {
       ["No. I like it, but it doesn’t run my life.", ["Grounded", "ToolUser", "Stable"]],
       ["Maybe. I hate that it might be true.", ["Attached", "Need", "Honest"]],
       ["Yeah… and I don’t love how much it pulls me.", ["Fused", "Need", "Compulsion"]],
-      ["Not hooked — just aware attention is leverage.", ["Grounded", "ToolUser", "Strategic"]],
+      ["Not hooked, just aware attention is leverage.", ["Grounded", "ToolUser", "Strategic"]],
       ["I’d get defensive and start proving them wrong.", ["Attached", "Chase", "Defensive"]]
     ]
   },
@@ -57,7 +57,7 @@ const obj = {
     options: [
       ["I don’t worry much. I’ll evolve and move on.", ["Grounded", "ToolUser", "Detachment"]],
       ["People forgetting me after years of being ‘the one.’", ["Attached", "Need", "Loss"]],
-      ["Feeling like I turn invisible again — and I hate that idea.", ["Fused", "Need", "IdentityThreat"]],
+      ["Feeling like I turn invisible again, and I hate that idea.", ["Fused", "Need", "IdentityThreat"]],
       ["Losing influence, not self. I care about impact.", ["Grounded", "ToolUser", "Strategic"]],
       ["Being replaced like I never mattered.", ["Attached", "Need", "EgoHit"]]
     ]
@@ -91,7 +91,7 @@ const obj = {
       ["Yes. Attention doesn’t define me.", ["Grounded", "ToolUser", "Stable"]],
       ["Mostly, but I’d miss it more than I admit.", ["Attached", "Need", "Loss"]],
       ["I’m not totally sure.", ["Attached", "Need", "IdentityThreat"]],
-      ["Yes — and I’d probably feel lighter.", ["Grounded", "ToolUser", "Detachment"]],
+      ["Yes, and I’d probably feel lighter.", ["Grounded", "ToolUser", "Detachment"]],
       ["No. It’s become part of how I orient myself.", ["Fused", "Need", "IdentityThreat"]]
     ]
   }
@@ -172,19 +172,19 @@ function interpretResults() {
     Grounded:
       "Attention is real, but it isn’t your core. You can be seen without being rearranged by being seen.",
     Attached:
-      "Attention matters to you more than you want to admit. You can still be yourself — but the room quietly influences your mood and choices.",
+      "Attention matters to you more than you want to admit. You can still be yourself, but the room quietly influences your mood and choices.",
     Fused:
-      "Attention has started to feel structural. When the spotlight dims, it’s not just quieter — it can feel like you lost your coordinates."
+      "Attention has started to feel structural. When the spotlight dims, it’s not just quieter, it can feel like you lost your coordinates."
   }[top];
 
   const toolNeedPhrase =
     toolNeedPct >= 70 ? "You treat attention like a tool: useful, not sacred." :
-    toolNeedPct >= 55 ? "You use attention — and sometimes it tugs back." :
+    toolNeedPct >= 55 ? "You use attention, and sometimes it tugs back." :
     "You lean need-first: attention feels emotionally important, not just helpful.";
 
   const chasePhrase =
     chasePct >= 70 ? "When attention drops, you’re tempted to go bigger. Big moves feel like the fastest reset." :
-    chasePct >= 55 ? "You’ll try to rekindle the spark — not always consciously." :
+    chasePct >= 55 ? "You’ll try to rekindle the spark, not always consciously." :
     "You’re not strongly chase-driven. Quiet doesn’t automatically feel like failure.";
 
   // strongest sensitivity
@@ -208,7 +208,7 @@ function interpretResults() {
   }[top];
 
   const para1 = `${typeBlurb} ${toolNeedPhrase} ${chasePhrase} ${vulnLine}`;
-  const para2 = `${forwardHook} End of Phase 3 — Phase 4 goes long-term: what attention does to relationships, routines, and the future.`;
+  const para2 = `${forwardHook} End of Phase 3, Phase 4 goes long-term: what attention does to relationships, routines, and the future.`;
 
   const description = `${para1}<br><br>${para2}`.trim();
 

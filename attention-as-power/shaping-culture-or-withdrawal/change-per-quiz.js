@@ -1,6 +1,6 @@
 // shaping-culture-or-withdrawal-quiz.js
 // (Quiz 24) Would you step into influence or quietly back away?
-// PHASE 5 — ATTENTION AS POWER (celebrity becomes force)
+// PHASE 5, ATTENTION AS POWER (celebrity becomes force)
 
 const obj = {
   0: {

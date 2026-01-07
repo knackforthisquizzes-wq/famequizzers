@@ -1,6 +1,6 @@
 // burn-bright-or-last-quiz.js
 // (Quiz 27) Do you prefer intensity or staying power?
-// PHASE 6 — LONG-TERM OUTCOMES (deep water, full synthesis)
+// PHASE 6, LONG-TERM OUTCOMES (deep water, full synthesis)
 
 const obj = {
   0: {
@@ -9,7 +9,7 @@ const obj = {
       ["A huge, explosive peak even if it fades quickly.", ["BurnBright", "Intensity", "HighRisk"]],
       ["A smaller rise that stays relevant for years.", ["LastLong", "Longevity", "LowRisk"]],
       ["A few intense seasons, followed by long quiet stretches.", ["Hybrid", "Cycles", "Recovery"]],
-      ["No clear peak — just steady presence over time.", ["LastLong", "Longevity", "Steady"]]
+      ["No clear peak, just steady presence over time.", ["LastLong", "Longevity", "Steady"]]
     ]
   },
 
@@ -29,7 +29,7 @@ const obj = {
       ["Take it. Big moments are worth the trade.", ["BurnBright", "HighRisk", "MomentumChaser"]],
       ["Pass. You’d rather build something durable.", ["LastLong", "LowRisk", "Disciplined"]],
       ["Take it, but only with clear limits and a plan.", ["Hybrid", "Control", "Boundary"]],
-      ["Hesitate — the trade-off doesn’t feel worth it.", ["LastLong", "StabilityNeed", "RiskSensitive"]]
+      ["Hesitate, the trade-off doesn’t feel worth it.", ["LastLong", "StabilityNeed", "RiskSensitive"]]
     ]
   },
 
@@ -68,7 +68,7 @@ const obj = {
     options: [
       ["If you’re not rising, you’re slipping.", ["BurnBright", "StatusHunger", "Intensity"]],
       ["Consistency matters more than spikes.", ["LastLong", "Disciplined", "Longevity"]],
-      ["Relevance comes in waves — ride them.", ["Hybrid", "Cycles", "Control"]],
+      ["Relevance comes in waves, ride them.", ["Hybrid", "Cycles", "Control"]],
       ["Relevance is optional. Freedom matters more.", ["Withdraw", "NeedsPrivacy", "Boundary"]]
     ]
   },
@@ -168,7 +168,7 @@ function interpretResults() {
     LastLong:
       "You prefer steady relevance over dramatic spikes, even if growth is slower.",
     Hybrid:
-      "You like working in chapters — intensity balanced with downtime.",
+      "You like working in chapters, intensity balanced with downtime.",
     Withdraw:
       "You value independence and space more than staying visible at all costs."
   }[top];

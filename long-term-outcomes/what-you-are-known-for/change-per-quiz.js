@@ -1,6 +1,6 @@
 // what-you-are-known-for-quiz.js
 // (Quiz 29) What would people reduce you to in the end?
-// PHASE 6 — LONG-TERM OUTCOMES (deep water, full synthesis)
+// PHASE 6, LONG-TERM OUTCOMES (deep water, full synthesis)
 
 const obj = {
   0: {
@@ -165,13 +165,13 @@ function interpretResults() {
 
   const outcomeBlurb = {
     TalentLegacy:
-      "In the end, people would reduce you to what you can do. Your work becomes the anchor — the thing they point to as proof.",
+      "In the end, people would reduce you to what you can do. Your work becomes the anchor, the thing they point to as proof.",
     StyleLegacy:
       "In the end, people would reduce you to image and vibe. You become a symbol people repost and imitate, even when they don’t understand you.",
     OpinionLegacy:
-      "In the end, people would reduce you to your words. Quotes, takes, arguments — your voice becomes the artifact.",
+      "In the end, people would reduce you to your words. Quotes, takes, arguments, your voice becomes the artifact.",
     MysteryLegacy:
-      "In the end, people would reduce you to mystery. The less they know, the more they project — and the projection becomes the legacy."
+      "In the end, people would reduce you to mystery. The less they know, the more they project, and the projection becomes the legacy."
   }[top];
 
   const substancePhrase =
@@ -181,7 +181,7 @@ function interpretResults() {
 
   const controlPhrase =
     controlPct >= 60
-      ? "You’d want to steer how you’re remembered — even at the end."
+      ? "You’d want to steer how you’re remembered, even at the end."
       : "You’re more likely to let people reduce you without fighting it.";
 
   const heatPhrase =
@@ -192,7 +192,7 @@ function interpretResults() {
   const para1 = `${outcomeBlurb} ${substancePhrase} ${controlPhrase} ${heatPhrase}`;
 
   const para2 =
-    "Next up: where you actually fit in the attention world — niche, mid-level, wide-scale, or rare outlier.";
+    "Next up: where you actually fit in the attention world, niche, mid-level, wide-scale, or rare outlier.";
 
   const description = `${para1}<br><br>${para2}`.trim();
 

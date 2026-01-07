@@ -51,7 +51,7 @@ const obj = {
     options: [
       ["Your work. Receipts. Numbers. Results.", ["Craft", "Fixation"]],
       ["Your tone. Your look. Your micro-expressions.", ["Aura", "Fixation"]],
-      ["Your exact words — people nitpicking and remixing them.", ["Conviction", "Debate", "Fixation"]],
+      ["Your exact words, people nitpicking and remixing them.", ["Conviction", "Debate", "Fixation"]],
       ["That one story. That one incident. That one day.", ["Moment", "Fixation"]],
       ["The “wait, did they really say that?” moment (forever).", ["Controversy", "Debate", "Fixation"]]
     ]
@@ -137,11 +137,11 @@ function interpretResults() {
   const personaTitle = `${style} ${knownForNames[top]}`;
 
   const knownForBlurb = {
-    Craft: "People remember you for skill that shows. Not hype — proof.",
+    Craft: "People remember you for skill that shows. Not hype, proof.",
     Aura: "People remember you for the vibe you leave in a room. You become a reference point.",
     Conviction: "People remember you for your point of view. You don’t soften every edge for applause.",
     Moment: "People remember you for a specific scene. One chapter becomes the headline.",
-    Controversy: "People remember you for being a conversation starter — even on your quiet days."
+    Controversy: "People remember you for being a conversation starter, even on your quiet days."
   }[top];
 
   const admirationTone =
@@ -158,9 +158,9 @@ function interpretResults() {
 
   const admirationPhrase = {
     admired: "Your attention leans applause-first. People want to credit you, not argue you.",
-    "mostly-admired": "Most people like you — a smaller, louder slice tries to box you in.",
+    "mostly-admired": "Most people like you, a smaller, louder slice tries to box you in.",
     mixed: "You get praise and pushback in the same breath. Depends who’s watching.",
-    debated: "Your attention leans debate-first. People don’t just watch — they react."
+    debated: "Your attention leans debate-first. People don’t just watch, they react."
   }[admirationTone];
 
   const clarityPhrase = {
@@ -180,7 +180,7 @@ function interpretResults() {
     Controversy: "Curveball: the internet loves a hot take and hates a quiet day."
   }[top];
 
-  const para2 = `${forwardHook} Next up: how fame finds you — and what the first wave looks like.`;
+  const para2 = `${forwardHook} Next up: how fame finds you, and what the first wave looks like.`;
 
   const description = `${para1}<br><br>${para2}`.trim();
 

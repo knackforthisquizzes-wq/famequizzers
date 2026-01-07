@@ -8,3 +8,6 @@
       localStorage.setItem('fameconsent', 'true');
       document.getElementById('consent-banner').style.display = 'none';
     });
+
+
+    

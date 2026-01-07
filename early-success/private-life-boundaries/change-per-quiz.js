@@ -9,7 +9,7 @@ const obj = {
       ["Selective. I’ll share some, but I decide what stays off-limits.", ["Selective", "Private", "Controlled"]],
       ["Moderate. I’ll share enough to feel real, but not everything.", ["Balanced", "Relatable", "Controlled"]],
       ["A lot. If it’s happening to me, it becomes part of the story.", ["OpenBook", "Relatable", "Overshare"]],
-      ["I don’t know until it happens — I might overshare under pressure.", ["LeakRisk", "Overshare", "Reactive"]]
+      ["I don’t know until it happens, I might overshare under pressure.", ["LeakRisk", "Overshare", "Reactive"]]
     ]
   },
 
@@ -18,9 +18,9 @@ const obj = {
     options: [
       ["Where I live / where I go / my routines.", ["Private", "SafetyFirst", "LockedDown"]],
       ["My relationships (who I’m with, who I’m not).", ["Private", "RelationshipGuard", "Selective"]],
-      ["My family — I don’t want them dragged into it.", ["FamilyShield", "Private", "LockedDown"]],
+      ["My family, I don’t want them dragged into it.", ["FamilyShield", "Private", "LockedDown"]],
       ["My mental health or low moments becoming “content.”", ["VulnerabilityGuard", "Private", "Selective"]],
-      ["Nothing specific — I’m more annoyed by being watched than by details.", ["OpenBook", "Relatable"]]
+      ["Nothing specific, I’m more annoyed by being watched than by details.", ["OpenBook", "Relatable"]]
     ]
   },
 
@@ -29,7 +29,7 @@ const obj = {
     options: [
       ["Ignore it completely. Not feeding that.", ["LockedDown", "Private", "Resistant"]],
       ["Answer vaguely and redirect.", ["Selective", "Controlled", "Resistant"]],
-      ["Share small details — it helps people connect.", ["Balanced", "Relatable"]],
+      ["Share small details, it helps people connect.", ["Balanced", "Relatable"]],
       ["Answer honestly unless it’s dangerous.", ["OpenBook", "Relatable", "Overshare"]],
       ["Snap sometimes. The entitlement would get to me.", ["Reactive", "BoundaryStress", "Resistant"]]
     ]
@@ -52,7 +52,7 @@ const obj = {
       ["Nothing. My peace is worth more than engagement.", ["LockedDown", "Private"]],
       ["Behind-the-scenes work, not personal life.", ["Selective", "Controlled", "Private"]],
       ["A personal struggle if it helps someone else.", ["Balanced", "Relatable", "Vulnerable"]],
-      ["Daily life stuff — routines, relationships, messy honesty.", ["OpenBook", "Overshare", "Relatable"]],
+      ["Daily life stuff, routines, relationships, messy honesty.", ["OpenBook", "Overshare", "Relatable"]],
       ["A clapback / emotional post when I feel misread.", ["Reactive", "Overshare", "BoundaryStress"]]
     ]
   },
@@ -64,7 +64,7 @@ const obj = {
       ["No family / kids / partners on camera.", ["FamilyShield", "RelationshipGuard", "Private"]],
       ["No real-time posting. Delay everything.", ["Controlled", "Selective", "Private"]],
       ["No pain-content. I don’t monetize pain.", ["VulnerabilityGuard", "Private", "Selective"]],
-      ["No rule stays forever — I adapt to what the audience can handle.", ["OpenBook", "LeakRisk", "Relatable"]]
+      ["No rule stays forever, I adapt to what the audience can handle.", ["OpenBook", "LeakRisk", "Relatable"]]
     ]
   },
 
@@ -157,9 +157,9 @@ function interpretResults() {
   // ----- primary blurb (cotton-candy swap: no safety/targeting/trauma/mental-health framing; keep playful + non-alarming) -----
   const postureBlurb = {
     LockedDown: "You treat privacy like a velvet rope. If you don’t set the boundary on purpose, the audience will wander right past it.",
-    Selective: "You’ll share — but only on your terms. You want connection without full-access backstage passes.",
+    Selective: "You’ll share, but only on your terms. You want connection without full-access backstage passes.",
     Balanced: "You like feeling human and reachable, but you still want parts of your life that stay off-camera and just yours.",
-    OpenBook: "You default to transparency. People feel close fast — which builds loyalty and also makes your life more remixable.",
+    OpenBook: "You default to transparency. People feel close fast, which builds loyalty and also makes your life more remixable.",
     LeakRisk: "Your boundaries shift when the vibe gets intense. You might start private, then post impulsively when the moment gets loud."
   }[top];
 
@@ -171,7 +171,7 @@ function interpretResults() {
   const controlPhrase =
     isControlled
       ? "You tend to keep a consistent boundary policy and stick to it."
-      : "You’re more mood-based — your boundaries can flex depending on how the comments feel that week.";
+      : "You’re more mood-based, your boundaries can flex depending on how the comments feel that week.";
 
   // pick the strongest boundary theme
   const themeKeys = ["SafetyFirst", "RelationshipGuard", "FamilyShield", "VulnerabilityGuard"];
@@ -189,11 +189,11 @@ function interpretResults() {
 
   const riskLine =
     isRisky
-      ? "Sparkle tip: your main slip risk isn’t sharing — it’s sharing in the heat of the moment, before you’ve had time to edit the caption."
+      ? "Sparkle tip: your main slip risk isn’t sharing, it’s sharing in the heat of the moment, before you’ve had time to edit the caption."
       : "Sparkle tip: your main drift risk is going so quiet that people fill in the blanks with fan-fiction.";
 
   const para1 = `${postureBlurb} ${privacyPhrase} ${controlPhrase} ${themeLine}`;
-  const para2 = `${riskLine} Next up: whether you curate yourself — or let the internet decide who you are.`;
+  const para2 = `${riskLine} Next up: whether you curate yourself, or let the internet decide who you are.`;
 
   const description = `${para1}<br><br>${para2}`.trim();
 

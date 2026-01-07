@@ -64,7 +64,7 @@ const obj = {
       ["Offended. That’s arrogant and wrong.", ["Fighter", "JusticeDrive", "Direct"]],
       ["Tired. I don’t have the energy to correct strangers.", ["Detacher", "Exhaustion", "Withhold"]],
       ["Strategic. I’ll use that perception while I build the next chapter.", ["Reframer", "Narrative"]],
-      ["Amused. People project — it’s kind of funny.", ["Deflector", "Humor"]],
+      ["Amused. People project, it’s kind of funny.", ["Deflector", "Humor"]],
       ["Unstable. I’d start questioning myself.", ["Spiral", "IdentityThreat", "Reactive"]]
     ]
   },
@@ -163,7 +163,7 @@ function interpretResults() {
     Detacher:
       "When narratives mutate, you protect peace. You starve the machine and keep your real life intact, even if the rumor survives.",
     Reframer:
-      "When the crowd writes the story, you change the story. You don’t argue every detail — you build a stronger narrative to replace it.",
+      "When the crowd writes the story, you change the story. You don’t argue every detail, you build a stronger narrative to replace it.",
     Deflector:
       "When the narrative gets weird, you get slippery. You use humor, ambiguity, and vibe control so the story can’t fully hook into you.",
     Spiral:
@@ -177,7 +177,7 @@ function interpretResults() {
 
   const engagePhrase =
     engagePct >= 70 ? "You engage directly. You’ll clarify, reframe, and manage perception on purpose." :
-    engagePct >= 55 ? "You engage selectively — one statement, then boundaries." :
+    engagePct >= 55 ? "You engage selectively, one statement, then boundaries." :
     "You engage minimally. You prefer silence, ambiguity, and letting waves die on their own.";
 
   // strongest pressure theme
@@ -197,7 +197,7 @@ function interpretResults() {
     Fighter: "Watch-out: constant correcting turns you into a permanent spokesperson for yourself.",
     Detacher: "Watch-out: silence protects peace, but it can also let a bad narrative calcify.",
     Reframer: "Watch-out: reframing works, but it can start to feel like you’re living inside strategy.",
-    Deflector: "Watch-out: deflection can read as evasive — and some crowds treat that as guilt.",
+    Deflector: "Watch-out: deflection can read as evasive, and some crowds treat that as guilt.",
     Spiral: "Watch-out: over-explaining hands the crowd more material to clip and reuse."
   }[top];
 

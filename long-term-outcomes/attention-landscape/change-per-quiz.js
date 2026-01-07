@@ -1,6 +1,6 @@
 // attention-landscape-quiz.js
 // (Quiz 30) Where do you actually fit in the attention world?
-// PHASE 6 — LONG-TERM OUTCOMES (deep water, full synthesis)
+// PHASE 6, LONG-TERM OUTCOMES (deep water, full synthesis)
 
 const obj = {
   0: {
@@ -199,7 +199,7 @@ function interpretResults() {
   const para1 = `${outcomeBlurb} ${noisePhrase} ${depthPhrase} ${boundaryPhrase}`;
 
   const para2 =
-    "This isn’t about winning attention — it’s about fit. The wrong landscape costs you more than it gives.";
+    "This isn’t about winning attention, it’s about fit. The wrong landscape costs you more than it gives.";
 
   const description = `${para1}<br><br>${para2}`.trim();
 

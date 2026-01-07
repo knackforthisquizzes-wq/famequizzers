@@ -5,10 +5,10 @@ const obj = {
   0: {
     question: "When people start noticing you, the kind of attention you crave most is:",
     options: [
-      ["Quiet respect — people think highly of me, even if they don’t post about it.", ["Admired", "LowDrama", "Controlled"]],
-      ["Big visibility — I want to be the topic, even if it’s messy.", ["TalkedAbout", "HighHeat", "Uncontrolled"]],
-      ["A mix — I want respect, but I don’t mind noise.", ["Mixed", "MediumHeat"]],
-      ["Neither — I want the work to be noticed, not *me*.", ["Avoidant", "LowHeat", "Controlled"]]
+      ["Quiet respect, people think highly of me, even if they don’t post about it.", ["Admired", "LowDrama", "Controlled"]],
+      ["Big visibility, I want to be the topic, even if it’s messy.", ["TalkedAbout", "HighHeat", "Uncontrolled"]],
+      ["A mix, I want respect, but I don’t mind noise.", ["Mixed", "MediumHeat"]],
+      ["Neither, I want the work to be noticed, not *me*.", ["Avoidant", "LowHeat", "Controlled"]]
     ]
   },
 
@@ -36,7 +36,7 @@ const obj = {
     question: "A creator you secretly envy is usually someone who:",
     options: [
       ["Has a clean reputation and steady loyal support.", ["Admired", "Controlled", "LowDrama"]],
-      ["Dominates the conversation — love or hate, they run the timeline.", ["TalkedAbout", "HighHeat", "Uncontrolled"]],
+      ["Dominates the conversation, love or hate, they run the timeline.", ["TalkedAbout", "HighHeat", "Uncontrolled"]],
       ["Feels human and relatable without being a circus.", ["Mixed", "MediumHeat", "LowDrama"]],
       ["Can make money and stay mostly unknown.", ["Avoidant", "Controlled", "LowHeat"]]
     ]
@@ -56,7 +56,7 @@ const obj = {
     question: "Your ideal fan behavior is:",
     options: [
       ["They defend my character and point to the work.", ["Admired", "StatusDriven", "LowDrama"]],
-      ["They quote me, remix me, argue about me — constant motion.", ["TalkedAbout", "RelevanceDriven", "HighHeat"]],
+      ["They quote me, remix me, argue about me, constant motion.", ["TalkedAbout", "RelevanceDriven", "HighHeat"]],
       ["They support me, but don’t make me their identity.", ["Mixed", "LowDrama"]],
       ["They leave me alone and just buy what I make.", ["Avoidant", "Controlled", "LowHeat"]]
     ]
@@ -149,7 +149,7 @@ function interpretResults() {
 
   // ----- core blurb (cotton-candy swap: no YMYL-y “stings”, “scares”, “watch-out”, “costs you”) -----
   const typeBlurb = {
-    Admired: "You’re wired for respect, not noise. The win isn’t being mentioned — it’s being taken seriously.",
+    Admired: "You’re wired for respect, not noise. The win isn’t being mentioned, it’s being taken seriously.",
     TalkedAbout: "You’re wired for momentum. Being discussed means you’re part of the sparkle-stream, even when the takes get spicy.",
     Mixed: "You want both: warmth and reach. You can handle attention, but only if it doesn’t turn you into a one-note sticker.",
     Avoidant: "You’d rather build value than become a spectacle. Attention is useful, but personal exposure feels pricey."
@@ -166,24 +166,24 @@ function interpretResults() {
     "low";
 
   const heatPhrase = {
-    high: "You can handle high-intensity attention — the kind that pops fast and glows loud.",
+    high: "You can handle high-intensity attention, the kind that pops fast and glows loud.",
     medium: "You can do attention in bursts, but you don’t want to live inside the confetti cannon.",
-    low: "You prefer low-temperature attention — steady, respectful, and not constantly all-over-your-notifications."
+    low: "You prefer low-temperature attention, steady, respectful, and not constantly all-over-your-notifications."
   }[heatTone];
 
   const controlPhrase = {
     high: "You like authorship. You’d rather be a little smaller than be endlessly re-captioned.",
     medium: "You’ll influence the vibe where you can, but you won’t spend all day chasing every stray take.",
-    low: "You’re more willing to let the internet do its thing — or you simply move with the wave instead of steering it."
+    low: "You’re more willing to let the internet do its thing, or you simply move with the wave instead of steering it."
   }[controlTone];
 
   // cotton-candy swap: replace “Watch-out” language with playful “sparkle tip”
   const stabilityHint =
     volatileBias > 0
-      ? "Sparkle tip: when things get extra online, you might turn the dial up instead of down — which keeps the spotlight warm."
+      ? "Sparkle tip: when things get extra online, you might turn the dial up instead of down, which keeps the spotlight warm."
       : fragileBias > 1
         ? "Sparkle tip: being re-captioned might land louder than you expect, even if you play it cool."
-        : "Sparkle tip: your main drift risk is subtle — slowly editing yourself to match what gets the biggest reactions.";
+        : "Sparkle tip: your main drift risk is subtle, slowly editing yourself to match what gets the biggest reactions.";
 
   const para1 = `${typeBlurb} ${heatPhrase} ${controlPhrase}`;
   const para2 = `${stabilityHint} Next up: whether you curate yourself… or the internet does it for you.`;

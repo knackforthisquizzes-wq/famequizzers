@@ -6,7 +6,7 @@ const obj = {
   0: {
     question: "You’re already wildly successful, and the next step requires even more visibility and output. Your instinct is:",
     options: [
-      ["Scale. Momentum is fragile — I keep pushing.", ["Scale", "Expansion", "Drive"]],
+      ["Scale. Momentum is fragile, I keep pushing.", ["Scale", "Expansion", "Drive"]],
       ["Stabilize. I protect what I built before it consumes my calendar.", ["Stabilize", "Boundaries", "Sustainability"]],
       ["Negotiate. I’ll grow, but only with structure and limits.", ["Hybrid", "Control", "Systems"]],
       ["Freeze. Too many options. Too much at once.", ["Freeze", "tension", "Overwhelm"]],
@@ -30,7 +30,7 @@ const obj = {
     options: [
       ["I’d rather build bigger than feel safe.", ["Scale", "Expansion"]],
       ["I’d rather keep my life than keep climbing.", ["Stabilize", "Sustainability"]],
-      ["I want growth — but on my terms.", ["Hybrid", "Control"]],
+      ["I want growth, but on my terms.", ["Hybrid", "Control"]],
       ["I don’t know what I want anymore.", ["Freeze", "Dislocation"]],
       ["I want out before it becomes a cage.", ["Exit", "Relief", "Privacy"]]
     ]
@@ -39,7 +39,7 @@ const obj = {
   3: {
     question: "When people say “you’re leaving money on the table,” you:",
     options: [
-      ["Agree. Money follows scale — I’m not stopping.", ["Scale", "Drive"]],
+      ["Agree. Money follows scale, I’m not stopping.", ["Scale", "Drive"]],
       ["Don’t care. Calm is worth more than upside.", ["Stabilize", "Sustainability"]],
       ["Care a little, but choose limits anyway.", ["Hybrid", "Boundaries"]],
       ["Spin out. What if I regret it later?", ["Freeze", "tension"]],
@@ -169,14 +169,14 @@ function interpretResults() {
   }[top];
 
   const axisPhrase = isGrowth
-    ? "Your default is to push forward — even when the costs are real."
-    : "Your default is to preserve life and identity — even if growth is available.";
+    ? "Your default is to push forward, even when the costs are real."
+    : "Your default is to preserve life and identity, even if growth is available.";
 
   const riskLine = {
     Scale: "Watch-out: confusing expansion with safety and never letting the game end.",
     Stabilize: "Watch-out: over-protecting until your world gets smaller than it needs to be.",
     Hybrid: "Watch-out: over-systematizing until life feels managed instead of lived.",
-    Freeze: "Watch-out: paralysis — not choosing is still a choice.",
+    Freeze: "Watch-out: paralysis, not choosing is still a choice.",
     Exit: "Watch-out: disappearing so hard you lose the plot, not just the spotlight."
   }[top];
 

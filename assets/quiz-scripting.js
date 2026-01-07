@@ -54,7 +54,7 @@ function createOptions(){
         obj[progress].options.forEach((option, id) =>{
             setTimeout(()=>{
                 $(`<div class="option" data-tag="${option[1][0] + ' ' + option[1][1]}">${option[0]}</div>`).appendTo($el.cont);
-                if(id === 3) eventHandlers();
+                if(id === obj[progress].options.length - 1) eventHandlers();
             }, 100 * id)
         })
     }, 2000)
@@ -75,7 +75,10 @@ function eventHandlers(){
 
         el.css('background-color', 'aqua')
         progress++;
-        $el.prog.animate({width: ((progress/(Object.values(obj).length - 1)) * 100) + '%'}, 500);
+
+        $el.prog.animate({width: ((progress/Object.values(obj).length) * 100) + '%'}, 500);
+
+
         setTimeout(()=>{
             if(progress <= Object.values(obj).length - 1){
                 el.css('background-color', 'aqua');
@@ -139,10 +142,10 @@ function shareResult(personalSummary) {
 if (navigator.share) {
     navigator.share({
     title: personalSummary.title,
-    text: `I played the ${quizTitle} Quiz — I'm a "${personalSummary.title}" 🕯️`,
+    text: `I played the ${quizTitle} Quiz, I'm a "${personalSummary.title}" 🕯️`,
     url: window.location.href
     }).catch((err) => {
-    // User cancelled or sharing failed — no big dealc
+    // User cancelled or sharing failed, no big dealc
     console.warn('Share canceled or failed:', err);
     });
 } else {

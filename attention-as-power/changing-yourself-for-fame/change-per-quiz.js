@@ -1,6 +1,6 @@
 // changing-yourself-for-fame-quiz.js
 // (Quiz 22) What would you be willing to change to stay relevant?
-// PHASE 5 — ATTENTION AS POWER (celebrity becomes force)
+// PHASE 5, ATTENTION AS POWER (celebrity becomes force)
 
 const obj = {
   0: {

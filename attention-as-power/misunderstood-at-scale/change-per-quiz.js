@@ -1,10 +1,10 @@
 // misunderstood-at-scale-quiz.js
 // (Quiz 23) How would you handle being misread by millions?
-// PHASE 5 — ATTENTION AS POWER (celebrity becomes force)
+// PHASE 5, ATTENTION AS POWER (celebrity becomes force)
 
 const obj = {
   0: {
-    question: "A huge account posts a “take” about you that’s wrong — and it spreads faster than the truth. You:",
+    question: "A huge account posts a “take” about you that’s wrong, and it spreads faster than the truth. You:",
     options: [
       ["Correct it immediately and clearly. I won’t let lies fossilize.", ["Corrector", "HighEngagement", "Control"]],
       ["Post one clean clarification, then stop feeding it.", ["Strategist", "MeasuredEngagement", "Control"]],
@@ -16,7 +16,7 @@ const obj = {
   1: {
     question: "People keep projecting a personality onto you that isn’t true. The worst part is:",
     options: [
-      ["The misinformation — it affects real decisions.", ["Corrector", "Control", "IntegrityFirst"]],
+      ["The misinformation, it affects real decisions.", ["Corrector", "Control", "IntegrityFirst"]],
       ["The emotional drain of constantly correcting.", ["Strategist", "NeedsRecovery", "MeasuredEngagement"]],
       ["Nothing. Projection is normal at scale.", ["Resigned", "ThickSkin", "Detached"]],
       ["The loss of humanity. I start feeling like a character.", ["Withdrawn", "Sensitive", "Overloaded"]]
@@ -163,13 +163,13 @@ function interpretResults() {
 
   const outcomeBlurb = {
     Corrector:
-      "You don’t tolerate false stories. Being misread by millions would kick in a correction instinct — because you know repeated narratives can start feeling like “the story.”",
+      "You don’t tolerate false stories. Being misread by millions would kick in a correction instinct, because you know repeated narratives can start feeling like “the story.”",
     Strategist:
       "You’ll clarify selectively. You want accuracy, but you refuse to spend your day debating every take online.",
     Resigned:
       "You treat misreads as part of being seen at scale. You’d rather keep moving than wrestle the crowd’s version of events.",
     Withdrawn:
-      "Being misread would feel uncomfortable and overly intrusive. Your move is simple: reduce access — less visibility, fewer remixable moments."
+      "Being misread would feel uncomfortable and overly intrusive. Your move is simple: reduce access, less visibility, fewer remixable moments."
   }[top];
 
   const engageTone =
@@ -191,7 +191,7 @@ function interpretResults() {
     "low-control";
 
   const engagePhrase = {
-    high: "You’re willing to engage publicly to shape perception — even if it takes repetition.",
+    high: "You’re willing to engage publicly to shape perception, even if it takes repetition.",
     medium: "You’ll engage when it matters, but you won’t chase every rumor.",
     mixed: "Some misreads would pull you in; others you’d ignore. Your threshold shifts with stakes and timing.",
     low: "You prefer distance. You don’t want your life to become a permanent response thread."
@@ -200,7 +200,7 @@ function interpretResults() {
   const skinPhrase = {
     thick: "You can handle being talked about without taking every comment personally.",
     "mostly-thick": "You can handle noise, but you still prefer space from nonstop commentary.",
-    mixed: "Some projections bounce off, others stick — especially when they touch something personal.",
+    mixed: "Some projections bounce off, others stick, especially when they touch something personal.",
     sensitive: "Misreads would linger longer than you’d like, so you’d do best with clear limits on how much you read and respond."
   }[skinTone];
 
@@ -214,10 +214,10 @@ function interpretResults() {
   const para1 = `${outcomeBlurb} ${engagePhrase} ${skinPhrase} ${controlPhrase}`;
 
   const forwardHook = {
-    Corrector: "Next: stepping into influence versus backing away — because if you can manage projection, you might start shaping culture on purpose.",
-    Strategist: "Next: influence — do you step into it, or quietly back away once it gets heavy?",
-    Resigned: "Next: influence — do you use visibility to shape culture, or stay out of the mess entirely?",
-    Withdrawn: "Next: influence — because once attention becomes force, withdrawal starts looking like access control."
+    Corrector: "Next: stepping into influence versus backing away, because if you can manage projection, you might start shaping culture on purpose.",
+    Strategist: "Next: influence, do you step into it, or quietly back away once it gets heavy?",
+    Resigned: "Next: influence, do you use visibility to shape culture, or stay out of the mess entirely?",
+    Withdrawn: "Next: influence, because once attention becomes force, withdrawal starts looking like access control."
   }[top];
 
   const para2 = `${forwardHook}`;

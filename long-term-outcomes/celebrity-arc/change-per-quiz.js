@@ -1,12 +1,12 @@
 // celebrity-arc-quiz.js
 // (Quiz 26) What kind of visibility trajectory would you actually live?
-// PHASE 6 — LONG-TERM OUTCOMES (deep water, full synthesis)
+// PHASE 6, LONG-TERM OUTCOMES (deep water, full synthesis)
 
 const obj = {
   0: {
     question: "Your first big break hits. What’s the most realistic way you respond over the next year?",
     options: [
-      ["I build slowly and consistently. I’m not trying to spike — I’m trying to last.", ["SteadyArc", "LongGame", "Disciplined"]],
+      ["I build slowly and consistently. I’m not trying to spike, I’m trying to last.", ["SteadyArc", "LongGame", "Disciplined"]],
       ["I ride momentum hard while it’s hot. I can rest later.", ["VolatileArc", "Intensity", "MomentumChaser"]],
       ["I spike fast from one moment, then struggle to repeat it.", ["BriefArc", "PeakMoment", "Unstable"]],
       ["I stay visible, but quietly. I keep my life intact while I grow.", ["QuietArc", "Protected", "LongGame"]]
@@ -49,7 +49,7 @@ const obj = {
       ["Over-commitment that makes the pace hard to keep.", ["VolatileArc", "Overdrive", "NeedsRecovery"]],
       ["One public mistake becoming the headline.", ["BriefArc", "FragileIdentity", "RiskSensitive"]],
       ["Boredom with repetition and obligation.", ["QuietArc", "NeedsPrivacy", "Boundary"]],
-      ["Nothing dramatic — just the slow grind of staying consistent.", ["SteadyArc", "Disciplined", "Resilient"]]
+      ["Nothing dramatic, just the slow grind of staying consistent.", ["SteadyArc", "Disciplined", "Resilient"]]
     ]
   },
 
@@ -57,7 +57,7 @@ const obj = {
     question: "How do you handle success internally?",
     options: [
       ["I stay grounded. I can enjoy it without turning it into identity.", ["SteadyArc", "Grounded", "Resilient"]],
-      ["It turns into hunger. I want more — faster.", ["VolatileArc", "Intensity", "MomentumChaser"]],
+      ["It turns into hunger. I want more, faster.", ["VolatileArc", "Intensity", "MomentumChaser"]],
       ["It feels surreal. I’m not sure I can hold it.", ["BriefArc", "Overloaded", "Sensitive"]],
       ["I compartmentalize. Success lives in one box, life lives in another.", ["QuietArc", "Protected", "Boundary"]]
     ]
@@ -213,7 +213,7 @@ function interpretResults() {
   }[stableTone];
 
   const accessPhrase = {
-    "low-access": "You’d keep access tight — you don’t want the crowd inside your life.",
+    "low-access": "You’d keep access tight, you don’t want the crowd inside your life.",
     guarded: "You do best with controlled engagement and predictable rhythms.",
     mixed: "Sometimes open, sometimes retreat. Your openness would shift by season.",
     "high-access": "You tolerate high access better than most, even when it gets noisy."
@@ -222,10 +222,10 @@ function interpretResults() {
   const para1 = `${outcomeBlurb} ${longPhrase} ${stablePhrase} ${accessPhrase}`;
 
   const forwardHook = {
-    SteadyArc: "Next: intensity vs longevity — what arc would you choose on purpose?",
-    VolatileArc: "Next: intensity vs longevity — because waves often come from choosing heat over time.",
-    BriefArc: "Next: intensity vs longevity — because a bright peak can be a choice, not an accident.",
-    QuietArc: "Next: intensity vs longevity — because staying low-access is its own trade-off."
+    SteadyArc: "Next: intensity vs longevity, what arc would you choose on purpose?",
+    VolatileArc: "Next: intensity vs longevity, because waves often come from choosing heat over time.",
+    BriefArc: "Next: intensity vs longevity, because a bright peak can be a choice, not an accident.",
+    QuietArc: "Next: intensity vs longevity, because staying low-access is its own trade-off."
   }[top];
 
   const description = `${para1}<br><br>${forwardHook}`.trim();

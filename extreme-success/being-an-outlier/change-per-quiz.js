@@ -28,7 +28,7 @@ const obj = {
   2: {
     question: "The trickiest part of being an outlier is:",
     options: [
-      ["Fewer true peers — the room gets quieter.", ["Isolated", "Loss"]],
+      ["Fewer true peers, the room gets quieter.", ["Isolated", "Loss"]],
       ["Sorting real warmth from performance.", ["Guarded", "Suspicion"]],
       ["Keeping your sweetness without over-explaining it.", ["Guilt", "MoralConflict"]],
       ["Staying composed when everyone’s watching.", ["Exceptional", "Pressure"]],
@@ -41,7 +41,7 @@ const obj = {
     options: [
       ["Graceful. Every path has its own shine.", ["Grounded", "Humility"]],
       ["Nostalgic. It was simpler back then.", ["Isolated", "Longing"]],
-      ["A little complicated — I didn’t ask for the distance.", ["Guilt", "Ambivalence"]],
+      ["A little complicated, I didn’t ask for the distance.", ["Guilt", "Ambivalence"]],
       ["Irrelevant. Comparison doesn’t match this altitude.", ["Detached", "OutlierMindset"]],
       ["Discreet. I keep wins understated to stay easy to be around.", ["Boundaried", "SelfCensor"]]
     ]
@@ -52,7 +52,7 @@ const obj = {
     options: [
       ["Nod. It’s just accurate.", ["Exceptional", "Acceptance"]],
       ["Deflect with charm. No pedestals, please.", ["Grounded", "Deflection"]],
-      ["Feel a little weird — it changes the temperature.", ["Isolated", "Discomfort"]],
+      ["Feel a little weird, it changes the temperature.", ["Isolated", "Discomfort"]],
       ["Clock the vibes. People project.", ["Guarded", "Suspicion"]],
       ["Barely react. It’s background music now.", ["Detached", "LowAttachment"]]
     ]
@@ -65,18 +65,18 @@ const obj = {
       ["Finding a tiny circle that actually gets it.", ["Isolated", "Selective"]],
       ["Keeping things tasteful and understated.", ["Guilt", "SelfCensor"]],
       ["Clear compartments. Clean lines. No chaos.", ["Boundaried", "Control"]],
-      ["Soft detachment — fewer hooks, fewer tangles.", ["Detached", "OutlierMindset"]]
+      ["Soft detachment, fewer hooks, fewer tangles.", ["Detached", "OutlierMindset"]]
     ]
   },
 
   6: {
     question: "The sentence that feels truest is:",
     options: [
-      ["I’m still me — the lighting just changed.", ["Grounded", "Continuity"]],
+      ["I’m still me, the lighting just changed.", ["Grounded", "Continuity"]],
       ["I gained a lot… and the room got quieter.", ["Isolated", "Loss"]],
-      ["I don’t feel ‘better’ — just differently styled.", ["Detached", "Existential"]],
+      ["I don’t feel ‘better’, just differently styled.", ["Detached", "Existential"]],
       ["I manage access. That’s the job now.", ["Boundaried", "Control"]],
-      ["I live outside the curve — and I’ve made it look elegant.", ["Exceptional", "OutlierMindset"]]
+      ["I live outside the curve, and I’ve made it look elegant.", ["Exceptional", "OutlierMindset"]]
     ]
   }
 };
@@ -173,7 +173,7 @@ function interpretResults() {
 
   const attachmentPhrase = isAttached
     ? "You keep a thread of warmth to people and meaning, even with the upgrade."
-    : "You prefer light distance — it keeps everything smooth and low-drama.";
+    : "You prefer light distance, it keeps everything smooth and low-drama.";
 
   const riskLine = {
     Exceptional: "Watch-out: becoming a symbol instead of a person.",
@@ -184,7 +184,7 @@ function interpretResults() {
   }[top];
 
   const para1 = `${coreBlurb} ${attachmentPhrase}`;
-  const para2 = `${riskLine} Outlier life changes the vibe — so you learn new rules of ease.`;
+  const para2 = `${riskLine} Outlier life changes the vibe, so you learn new rules of ease.`;
 
   const description = `${para1}<br><br>${para2}`.trim();
 
