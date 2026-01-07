@@ -476,26 +476,7 @@
     <button id="agree-btn">✓ I Agree</button>
   </div>
 
-  <script>
-  const consent = localStorage.getItem('trendlineConsent');
-  if (!consent) {
-    document.getElementById('consent-banner').style.display = 'flex';
-  }
 
-  // Agree click -> store + hide + load GA
-  document.getElementById('agree-btn').addEventListener('click', function() {
-    localStorage.setItem('trendlineConsent', 'true');
-    document.getElementById('consent-banner').style.display = 'none';
-    loadGA();
-  });
-
-  // Your FAQ toggle (keep it)
-  document.querySelectorAll('.faq-question').forEach(btn => {
-    btn.addEventListener('click', () => {
-      btn.nextElementSibling.classList.toggle('open');
-    });
-  });
-  </script>
 
 
 
