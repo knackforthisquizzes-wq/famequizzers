@@ -1,0 +1,930 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- Long-tail, SERP-friendly title -->
+<title>How Fame Works: Attention Amplification & Visibility Thresholds | FameQuizzers</title>
+
+<meta name="description" content="Fame mechanics in the attention economy—attention amplification, visibility thresholds, narrative compression, and why public recognition changes with exposure." />
+
+  <meta name="robots" content="index,follow,max-image-preview:large" />
+  <link rel="canonical" href="https://famequizzers.com/guide/fame-mechanics-attention-economy-public-recognition/" />
+
+  <!-- Open Graph -->
+  <meta property="og:site_name" content="FameQuizzers" />
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="How Fame Actually Works: Attention Amplification & Visibility Thresholds" />
+  <meta property="og:description" content="Fame isn’t a personality trait. It’s a visibility mechanism with thresholds, feedback loops, and narrative compression." />
+  <meta property="og:url" content="https://famequizzers.com/guide/fame-mechanics-attention-economy-public-recognition/" />
+  <meta property="og:image" content="https://famequizzers.com/og/how-fame-works.png" />
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="How Fame Actually Works: Attention Amplification & Thresholds" />
+  <meta name="twitter:description" content="A system-level explanation of fame as attention scaling, not a personality trait." />
+  <meta name="twitter:image" content="https://famequizzers.com/og/how-fame-works.png" />
+
+  <!-- Theme color -->
+  <meta name="theme-color" content="#0b0b10" />
+
+  <style>
+    :root{
+      --bg: #05060a;
+      --card: rgba(10, 11, 18, 0.72);
+      --card2: rgba(10, 11, 18, 0.58);
+      --text: rgba(255,255,255,0.92);
+      --muted: rgba(255,255,255,0.70);
+      --faint: rgba(255,255,255,0.52);
+      --stroke: rgba(255,255,255,0.10);
+
+      /* Accents: keep restrained */
+      --purple: #b66bff;
+      --aqua: #66f0ff;
+
+      --shadow: 0 18px 55px rgba(0,0,0,0.55);
+      --radius: 18px;
+      --max: 1080px;
+    }
+
+    * { box-sizing: border-box; }
+    html, body { height: 100%; }
+    body{
+      margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Apple Color Emoji","Segoe UI Emoji";
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    /* Video background */
+    .bg-wrap{
+      position: fixed;
+      inset: 0;
+      z-index: -2;
+      overflow: hidden;
+      background: #000;
+    }
+    .bg-video{
+      position:absolute;
+      inset:0;
+      width:100%;
+      height:100%;
+      object-fit: cover;
+      filter: contrast(1.05) saturate(1.05) brightness(0.78);
+      transform: scale(1.02);
+    }
+    .bg-overlay{
+      position:absolute;
+      inset:0;
+      background:
+        radial-gradient(900px 600px at 20% 10%, rgba(182,107,255,0.20), transparent 55%),
+        radial-gradient(900px 600px at 80% 20%, rgba(102,240,255,0.12), transparent 60%),
+        linear-gradient(to bottom, rgba(0,0,0,0.70), rgba(0,0,0,0.80));
+      z-index: -1;
+    }
+    .grain{
+      position:absolute;
+      inset:0;
+      pointer-events:none;
+      opacity:0.11;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='120' height='120' filter='url(%23n)' opacity='.55'/%3E%3C/svg%3E");
+      mix-blend-mode: overlay;
+    }
+
+    header{
+      padding: 42px 18px 22px;
+    }
+    .wrap{
+      width: min(var(--max), calc(100% - 36px));
+      margin: 0 auto;
+    }
+
+    .topbar{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap: 14px;
+      margin-bottom: 18px;
+    }
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      text-decoration:none;
+      color: var(--text);
+      letter-spacing: 0.2px;
+    }
+    .logo-dot{
+      width: 12px;
+      height: 12px;
+      border-radius: 999px;
+      background: linear-gradient(135deg, var(--purple), var(--aqua));
+      box-shadow: 0 0 22px rgba(182,107,255,0.35);
+    }
+    .brand span{
+      font-weight: 700;
+      font-size: 14px;
+      opacity: 0.92;
+    }
+
+    .crumbs{
+      font-size: 13px;
+      color: var(--faint);
+      display:flex;
+      gap: 8px;
+      align-items:center;
+      flex-wrap: wrap;
+    }
+    .crumbs a{
+      color: var(--muted);
+      text-decoration:none;
+      border-bottom: 1px solid transparent;
+    }
+    .crumbs a:hover{ border-bottom-color: rgba(255,255,255,0.25); }
+    .sep{ opacity: 0.5; }
+
+    .hero{
+      padding: 18px 0 18px;
+    }
+
+    .badge-row{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      margin-bottom: 14px;
+    }
+    .badge{
+      padding: 7px 10px;
+      border: 1px solid var(--stroke);
+      border-radius: 999px;
+      background: rgba(10, 11, 18, 0.40);
+      font-size: 12px;
+      color: var(--muted);
+      display:inline-flex;
+      gap:8px;
+      align-items:center;
+      backdrop-filter: blur(8px);
+    }
+    .badge i{
+      width:8px;height:8px;border-radius:999px;
+      background: var(--purple);
+      box-shadow: 0 0 14px rgba(182,107,255,0.30);
+      display:inline-block;
+    }
+    .badge.aqua i{ background: var(--aqua); box-shadow: 0 0 14px rgba(102,240,255,0.24); }
+
+    h1{
+      margin: 0 0 10px;
+      font-size: clamp(30px, 3.4vw, 46px);
+      line-height: 1.12;
+      letter-spacing: -0.02em;
+    }
+    .lede{
+      margin: 0;
+      max-width: 72ch;
+      font-size: 16px;
+      color: var(--muted);
+    }
+
+    main{
+      padding: 10px 0 60px;
+    }
+
+    .grid{
+      display:grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 18px;
+      align-items:start;
+    }
+    @media (max-width: 980px){
+      .grid{ grid-template-columns: 1fr; }
+    }
+
+    .card{
+      border: 1px solid var(--stroke);
+      border-radius: var(--radius);
+      background: var(--card);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(10px);
+      overflow:hidden;
+    }
+    .card .inner{ padding: 18px 18px; }
+    .card.soft{ background: var(--card2); }
+
+    .toc h2{
+      margin:0 0 8px;
+      font-size: 14px;
+      letter-spacing: 0.02em;
+      text-transform: uppercase;
+      color: var(--faint);
+    }
+    .toc a{
+      display:block;
+      padding: 10px 12px;
+      margin: 6px 0;
+      border-radius: 12px;
+      border: 1px solid rgba(255,255,255,0.08);
+      text-decoration:none;
+      color: var(--muted);
+      background: rgba(0,0,0,0.18);
+    }
+    .toc a:hover{
+      border-color: rgba(182,107,255,0.22);
+      color: var(--text);
+    }
+
+    article h2{
+      margin: 0 0 8px;
+      font-size: 22px;
+      letter-spacing: -0.01em;
+    }
+    article h3{
+      margin: 18px 0 8px;
+      font-size: 18px;
+      letter-spacing: -0.01em;
+      color: var(--text);
+    }
+    article p{ margin: 0 0 14px; color: var(--muted); }
+    article strong{ color: var(--text); font-weight: 700; }
+
+    .callout{
+      border: 1px solid rgba(182,107,255,0.20);
+      background: rgba(182,107,255,0.08);
+      border-radius: 14px;
+      padding: 14px 14px;
+      color: var(--muted);
+      margin: 14px 0 18px;
+    }
+    .callout .kicker{
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: rgba(255,255,255,0.72);
+      margin-bottom: 6px;
+    }
+
+    .two-col{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin: 14px 0 18px;
+    }
+    @media (max-width: 720px){
+      .two-col{ grid-template-columns: 1fr; }
+    }
+    .mini{
+      padding: 14px 14px;
+      border-radius: 14px;
+      border: 1px solid rgba(255,255,255,0.10);
+      background: rgba(0,0,0,0.18);
+    }
+    .mini h4{
+      margin:0 0 6px;
+      font-size: 14px;
+      color: var(--text);
+    }
+    .mini p{ margin:0; color: var(--muted); font-size: 14px; }
+
+    .table{
+      width: 100%;
+      border-collapse: collapse;
+      margin: 12px 0 18px;
+      font-size: 14px;
+    }
+    .table th, .table td{
+      padding: 10px 10px;
+      border-bottom: 1px solid rgba(255,255,255,0.10);
+      vertical-align: top;
+      color: var(--muted);
+    }
+    .table th{
+      text-align:left;
+      color: rgba(255,255,255,0.82);
+      font-weight: 700;
+    }
+    .pill{
+      display:inline-block;
+      padding: 4px 10px;
+      border-radius: 999px;
+      font-size: 12px;
+      border: 1px solid rgba(255,255,255,0.10);
+      background: rgba(0,0,0,0.18);
+      color: var(--muted);
+      white-space: nowrap;
+    }
+    .pill.purple{ border-color: rgba(182,107,255,0.25); }
+    .pill.aqua{ border-color: rgba(102,240,255,0.22); }
+
+    a.inline{
+      color: rgba(255,255,255,0.88);
+      text-decoration: none;
+      border-bottom: 1px solid rgba(182,107,255,0.45);
+    }
+    a.inline:hover{ border-bottom-color: rgba(102,240,255,0.55); }
+
+    .faq details{
+      border: 1px solid rgba(255,255,255,0.10);
+      background: rgba(0,0,0,0.18);
+      border-radius: 14px;
+      padding: 12px 14px;
+      margin: 10px 0;
+    }
+    .faq summary{
+      cursor:pointer;
+      font-weight: 700;
+      color: rgba(255,255,255,0.86);
+      outline: none;
+    }
+    .faq p{ margin: 10px 0 0; color: var(--muted); }
+
+    .footer{
+      margin-top: 18px;
+      padding: 18px 18px;
+      border-top: 1px solid rgba(255,255,255,0.10);
+      color: var(--faint);
+      font-size: 13px;
+    }
+
+    .cta{
+      display:flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-top: 12px;
+    }
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:10px;
+      padding: 10px 14px;
+      border-radius: 14px;
+      border: 1px solid rgba(255,255,255,0.12);
+      background: rgba(0,0,0,0.20);
+      color: rgba(255,255,255,0.90);
+      text-decoration:none;
+      font-weight: 700;
+      font-size: 14px;
+    }
+    .btn:hover{
+      border-color: rgba(182,107,255,0.22);
+      box-shadow: 0 0 0 3px rgba(182,107,255,0.10);
+    }
+    .btn.primary{
+      border-color: rgba(182,107,255,0.35);
+      background: linear-gradient(135deg, rgba(182,107,255,0.16), rgba(102,240,255,0.10));
+    }
+    .btn .spark{
+      width:8px;height:8px;border-radius:999px;
+      background: var(--aqua);
+      box-shadow: 0 0 14px rgba(102,240,255,0.22);
+    }
+  </style>
+
+  <!-- Structured Data: extended graph + FAQ + breadcrumbs -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Organization",
+        "@id": "https://famequizzers.com/#org",
+        "name": "FameQuizzers",
+        "url": "https://famequizzers.com/",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://famequizzers.com/logo.png"
+        },
+        "sameAs": []
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://famequizzers.com/#website",
+        "url": "https://famequizzers.com/",
+        "name": "FameQuizzers",
+        "publisher": { "@id": "https://famequizzers.com/#org" },
+        "inLanguage": "en"
+      },
+      {
+        "@type": "WebPage",
+        "@id": "https://famequizzers.com/guide/fame-mechanics-attention-economy-public-recognition/#webpage",
+        "url": "https://famequizzers.com/guide/fame-mechanics-attention-economy-public-recognition/",
+        "name": "How Fame Actually Works: Attention Amplification, Visibility Thresholds, and Public Recognition Mechanics",
+        "description": "A system-level guide to how fame scales: attention amplification, visibility thresholds, narrative compression, and why recognition behaves differently at each exposure level.",
+        "isPartOf": { "@id": "https://famequizzers.com/#website" },
+        "about": [
+          { "@type": "Thing", "name": "Fame" },
+          { "@type": "Thing", "name": "Attention" },
+          { "@type": "Thing", "name": "Public recognition" },
+          { "@type": "Thing", "name": "Social amplification" }
+        ],
+        "breadcrumb": { "@id": "https://famequizzers.com/guide/fame-mechanics-attention-economy-public-recognition/#breadcrumb" },
+        "primaryImageOfPage": {
+          "@type": "ImageObject",
+          "url": "https://famequizzers.com/og/how-fame-works.png"
+        },
+        "inLanguage": "en"
+      },
+      {
+        "@type": "BreadcrumbList",
+        "@id": "https://famequizzers.com/guide/fame-mechanics-attention-economy-public-recognition/#breadcrumb",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://famequizzers.com/" },
+          { "@type": "ListItem", "position": 2, "name": "Guides", "item": "https://famequizzers.com/guides/" },
+          { "@type": "ListItem", "position": 3, "name": "How Fame Works", "item": "https://famequizzers.com/guide/fame-mechanics-attention-economy-public-recognition/" }
+        ]
+      },
+      {
+        "@type": "Article",
+        "@id": "https://famequizzers.com/guide/fame-mechanics-attention-economy-public-recognition/#article",
+        "headline": "How Fame Actually Works: Attention Amplification, Visibility Thresholds, and Public Recognition Mechanics",
+        "description": "A system-level guide to how fame scales: attention amplification, visibility thresholds, narrative compression, and why recognition behaves differently at each exposure level.",
+        "mainEntityOfPage": { "@id": "https://famequizzers.com/guide/fame-mechanics-attention-economy-public-recognition/#webpage" },
+        "author": {
+          "@type": "Organization",
+          "name": "FameQuizzers Editorial",
+          "url": "https://famequizzers.com/"
+        },
+        "publisher": { "@id": "https://famequizzers.com/#org" },
+        "datePublished": "2026-01-08",
+        "dateModified": "2026-01-08",
+        "image": "https://famequizzers.com/og/how-fame-works.png",
+        "keywords": [
+          "how fame works",
+          "attention amplification",
+          "visibility thresholds",
+          "public recognition mechanics",
+          "attention ladder",
+          "narrative compression"
+        ],
+        "inLanguage": "en"
+      },
+      {
+        "@type": "FAQPage",
+        "@id": "https://famequizzers.com/guide/fame-mechanics-attention-economy-public-recognition/#faq",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "What is fame, in practical terms?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "In practical terms, fame is repeated public recognition at a scale where information about you spreads through networks faster than you can control it. It’s a visibility mechanism driven by amplification and repetition, not a personal trait."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What is attention amplification?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Attention amplification is the process where a unit of attention (a view, a mention, a share) increases the probability of more attention through distribution systems like social sharing, media pickup, and recommendation feeds."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What are visibility thresholds?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Visibility thresholds are scale points where the rules change: recognition moves from occasional to persistent, the audience becomes less coherent, and narratives spread through intermediaries (clips, headlines, reposts) rather than direct experience."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Why does public recognition feel different at different scales?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "At small scales, recognition is contextual and tied to communities. At larger scales, recognition becomes decontextualized: people recognize a simplified version of you (a label, clip, or stereotype) because it travels better than nuance."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Is this page advice for becoming famous?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "No. This page explains mechanisms—how attention tends to spread and change shape as it scales. It’s descriptive, not prescriptive."
+            }
+          }
+        ]
+      }
+    ]
+  }
+  </script>
+</head>
+<body>
+  <!-- Background video (swap src to the actual file path) -->
+  <div class="bg-wrap" aria-hidden="true">
+    <video class="bg-video" autoplay muted loop playsinline preload="metadata">
+      <!-- Replace with a mostly-dark background video -->
+      <source src="../../background-video.mp4" type="video/mp4" />
+    </video>
+    <div class="bg-overlay"></div>
+    <div class="grain"></div>
+  </div>
+
+  <header>
+    <div class="wrap">
+      <div class="topbar">
+        <a class="brand" href="https://famequizzers.com/">
+          <span class="logo-dot" aria-hidden="true"></span>
+          <span>FameQuizzers</span>
+        </a>
+
+        <nav class="crumbs" aria-label="Breadcrumb">
+          <a href="https://famequizzers.com/">Home</a>
+          <span class="sep">/</span>
+          <a href="https://famequizzers.com/guides/">Guides</a>
+          <span class="sep">/</span>
+          <span aria-current="page">How Fame Works</span>
+        </nav>
+      </div>
+
+      <section class="hero">
+        <div class="badge-row" aria-label="Page highlights">
+          <span class="badge"><i aria-hidden="true"></i> System-level explanation</span>
+          <span class="badge aqua"><i aria-hidden="true"></i> Mechanisms & thresholds</span>
+          <span class="badge"><i aria-hidden="true"></i> Zero fluff</span>
+        </div>
+
+        <h1>How Fame Actually Works: Attention, Amplification, and Thresholds</h1>
+        <p class="lede">
+          Fame isn’t a personality trait. It’s a <strong>visibility mechanism</strong>—a system where attention multiplies,
+          recognition changes shape as it scales, and simplified stories travel farther than full context.
+          This guide explains the moving parts: <strong>amplification</strong>, <strong>thresholds</strong>, and the physics of public recognition.
+        </p>
+
+        <div class="cta">
+          <a class="btn primary" href="#attention-amplification"><span class="spark" aria-hidden="true"></span> Amplification</a>
+          <a class="btn" href="#faq">FAQ</a>
+        </div>
+      </section>
+    </div>
+  </header>
+
+  <main>
+    <div class="wrap grid">
+      <!-- Main article -->
+      <article class="card" id="main-article">
+        <div class="inner">
+          <section id="definition">
+            <h2>Definition: fame as a visibility mechanism</h2>
+            <p>
+              A boring definition first prevents magical thinking.
+              <strong>Fame</strong> is repeated public recognition at a scale where information about you spreads through networks
+              faster than you can personally manage—often through intermediaries like reposts, clips, headlines, and secondhand summaries.
+            </p>
+            <p>
+              In this framing, fame isn’t “being liked,” “being talented,” or “being important.”
+              It’s a <strong>distribution pattern</strong>. It’s what happens when attention becomes self-reinforcing.
+            </p>
+
+            <div class="callout" role="note" aria-label="Key idea">
+              <div class="kicker">Key idea</div>
+              Fame is a system with inputs (attention), multipliers (amplification), and phase changes (thresholds). Personality can influence
+              the inputs—but the system has its own rules once scale arrives.
+            </div>
+          </section>
+
+          <section id="attention-amplification">
+            <h2>Attention amplification: how a little attention becomes a lot</h2>
+            <p>
+              <strong>Attention amplification</strong> is the process where one unit of attention increases the probability of more attention.
+              A view becomes a share; a share becomes a clip; a clip becomes a mention; a mention becomes coverage; coverage becomes search interest;
+              and search interest feeds back into more views.
+            </p>
+
+            <div class="two-col">
+              <div class="mini">
+                <h4>Amplification is not “people liking you”</h4>
+                <p>
+                  It’s a distribution effect. Systems amplify what travels—what’s short, emotionally legible, and easy to repeat.
+                </p>
+              </div>
+              <div class="mini">
+                <h4>Repetition creates recognition</h4>
+                <p>
+                  Recognition is often “I’ve seen this before,” not “I know this well.” Repetition is the engine.
+                </p>
+              </div>
+            </div>
+
+            <h3>Three common amplifiers</h3>
+            <p>
+              These aren’t “tips.” They’re the levers that tend to exist in any attention ecosystem:
+            </p>
+
+            <table class="table" aria-label="Amplifiers table">
+              <thead>
+                <tr>
+                  <th>Amplifier</th>
+                  <th>What it does</th>
+                  <th>Why it works</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><span class="pill purple">Network effects</span></td>
+                  <td>Attention spreads through social graphs and communities.</td>
+                  <td>Sharing is frictionless; repetition is built into the network.</td>
+                </tr>
+                <tr>
+                  <td><span class="pill aqua">Recommendation systems</span></td>
+                  <td>Content is distributed beyond the original audience.</td>
+                  <td>Distribution is optimized for engagement, not context.</td>
+                </tr>
+                <tr>
+                  <td><span class="pill purple">Intermediaries</span></td>
+                  <td>Clips, headlines, commentary accounts reshape the source.</td>
+                  <td>Summaries travel farther than originals; nuance doesn’t scale.</td>
+                </tr>
+              </tbody>
+            </table>
+
+            <p>
+              The important thing is the direction: once attention becomes a multiplier, <strong>scale stops behaving linearly</strong>.
+              You don’t just get “more of the same.” You get a different kind of social object.
+            </p>
+          </section>
+
+          <section id="thresholds">
+            <h2>Visibility thresholds: the points where the rules change</h2>
+            <p>
+              A <strong>visibility threshold</strong> is a scale point where recognition changes from occasional to persistent,
+              and attention starts arriving from people with no shared context.
+              These thresholds are why fame feels like “different physics” at different levels.
+            </p>
+
+            <h3>The attention ladder (a useful simplification)</h3>
+            <p>
+              This ladder isn’t a moral ranking. It’s a map of how recognition typically behaves as reach increases.
+            </p>
+
+            <table class="table" aria-label="Attention ladder table">
+              <thead>
+                <tr>
+                  <th>Level</th>
+                  <th>Recognition pattern</th>
+                  <th>What changes</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>Niche</strong></td>
+                  <td>Recognized by a specific community.</td>
+                  <td>Context is shared; people can explain <em>why</em> they recognize you.</td>
+                </tr>
+                <tr>
+                  <td><strong>Local / Scene</strong></td>
+                  <td>Recognized in a geography or subculture.</td>
+                  <td>Recognition becomes portable; you’re “known in places.”</td>
+                </tr>
+                <tr>
+                  <td><strong>Platform</strong></td>
+                  <td>Recognized by feed exposure and repeated clips.</td>
+                  <td>Recognition detaches from origin; people recognize the “version” of you that spreads.</td>
+                </tr>
+                <tr>
+                  <td><strong>Mainstream</strong></td>
+                  <td>Recognized by mass intermediaries (media, broad distribution).</td>
+                  <td>Audience coherence breaks; narratives compete; shorthand labels dominate.</td>
+                </tr>
+                <tr>
+                  <td><strong>Omnipresent</strong></td>
+                  <td>Recognition becomes ambient.</td>
+                  <td>People recognize you without being able to place you; the symbol outruns the person.</td>
+                </tr>
+              </tbody>
+            </table>
+
+            <div class="callout" role="note" aria-label="Threshold summary">
+              <div class="kicker">Threshold summary</div>
+              The big transition is from <strong>contextual recognition</strong> (“I know you from X”) to <strong>decontextualized recognition</strong>
+              (“I’ve seen you everywhere”). That’s where narrative compression becomes the default.
+            </div>
+          </section>
+
+          <section id="narrative-compression">
+            <h2>Narrative compression: why you get reduced to a headline</h2>
+            <p>
+              At scale, the public rarely consumes the full story. It consumes a <strong>compressed version</strong>:
+              a label, a clip, a screenshot, a quote, a vibe. Compression is not always malicious.
+              It’s an efficiency adaptation—because attention is limited and feeds move fast.
+            </p>
+
+            <h3>Compression favors what is portable</h3>
+            <p>
+              Portability means: short, repeatable, emotionally legible, easy to summarize.
+              That’s why “the most accurate description” often loses to “the most repeatable description.”
+            </p>
+
+            <div class="two-col">
+              <div class="mini">
+                <h4>Portable: travels well</h4>
+                <p>
+                  A simple phrase, a striking moment, a recognizable aesthetic, a single trait that explains everything (even when it doesn’t).
+                </p>
+              </div>
+              <div class="mini">
+                <h4>Non-portable: dies in transit</h4>
+                <p>
+                  Nuance, context, long timelines, contradictions, and anything that needs five sentences before it makes sense.
+                </p>
+              </div>
+            </div>
+
+            <p>
+              This is the mechanical reason public recognition can feel “unfair” to observers:
+              the system rewards <strong>compression</strong>, not completeness.
+            </p>
+          </section>
+
+          <section id="feedback-loops">
+            <h2>Feedback loops: when attention starts steering attention</h2>
+            <p>
+              Once visibility passes a threshold, attention becomes self-referential:
+              people pay attention because others are paying attention.
+              This is why fame can expand quickly and then stabilize into a steady “baseline.”
+            </p>
+
+            <h3>Two common loops</h3>
+            <div class="two-col">
+              <div class="mini">
+                <h4>Visibility → coverage → search → visibility</h4>
+                <p>
+                  Attention triggers commentary, which triggers curiosity, which triggers more discovery.
+                </p>
+              </div>
+              <div class="mini">
+                <h4>Association loops</h4>
+                <p>
+                  Being connected to other attention sources increases distribution, even when the connection is thin.
+                </p>
+              </div>
+            </div>
+
+            <p>
+              The system-level takeaway: fame grows through <strong>reinforcement</strong>, not a single cause.
+              That’s why “one viral moment” sometimes evaporates and sometimes compounds—depending on whether a loop forms.
+            </p>
+          </section>
+
+          <section id="why-recognition-changes">
+            <h2>Why recognition feels different at each scale</h2>
+            <p>
+              Recognition isn’t a single experience. It changes shape as scale increases:
+            </p>
+
+            <h3>At smaller scales: recognition is contextual</h3>
+            <p>
+              People can usually explain the connection: they saw your work, share a community, or know the origin story.
+              Recognition behaves like a social signal inside a group.
+            </p>
+
+            <h3>At larger scales: recognition is shorthand</h3>
+            <p>
+              People recognize a portable version of you—often without knowing the original context.
+              Recognition behaves like pattern-matching: “I’ve seen that face/name/clip before.”
+            </p>
+
+            <div class="callout" role="note" aria-label="Mechanism note">
+              <div class="kicker">Mechanism note</div>
+              This is why “public recognition” can grow even when “public understanding” doesn’t. Recognition scales through repetition; understanding scales through time and context.
+            </div>
+          </section>
+
+          <section id="common-mistakes">
+            <h2>Common misreads of fame (and the correct model)</h2>
+            <p>
+              Most myths about fame come from treating it like a personal quality instead of a system.
+              Here are a few common misreads—corrected in system terms:
+            </p>
+
+            <table class="table" aria-label="Misreads table">
+              <thead>
+                <tr>
+                  <th>Myth</th>
+                  <th>System reality</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>“Fame equals talent.”</td>
+                  <td>Fame equals distribution + repetition. Talent can help, but it’s not the definition.</td>
+                </tr>
+                <tr>
+                  <td>“If people know you, they know you.”</td>
+                  <td>Large-scale recognition is often decontextualized—people recognize an outline.</td>
+                </tr>
+                <tr>
+                  <td>“More attention is just more of the same.”</td>
+                  <td>Thresholds change the rules: audience coherence drops, intermediaries rise, compression increases.</td>
+                </tr>
+                <tr>
+                  <td>“You can control the story if you explain enough.”</td>
+                  <td>Compression and repetition select what travels; full context rarely becomes the main artifact.</td>
+                </tr>
+              </tbody>
+            </table>
+          </section>
+
+          <section id="how-this-connects">
+            <h2>How this connects to FameQuizzers (and why quizzes aren’t the whole site)</h2>
+            <p>
+              FameQuizzers is built around one idea: fame is a system that changes with scale.
+              The quizzes aren’t meant to be “random entertainment.” They’re <strong>scenario diagnostics</strong>—interactive ways
+              to explore how different visibility mechanics feel when you change the conditions.
+            </p>
+            <p>
+              These mechanisms show up most clearly in the phase hubs:
+              <a class="inline" href="https://famequizzers.com/celebrity-fantasy/">Celebrity Fantasy</a>,
+              <a class="inline" href="https://famequizzers.com/early-success/">Early Success</a>,
+              <a class="inline" href="https://famequizzers.com/sustained-fame/">Sustained Fame</a>,
+              <a class="inline" href="https://famequizzers.com/attention-as-power/">Attention as Power</a>,
+              and <a class="inline" href="https://famequizzers.com/long-term-outcomes/">Long-Term Outcomes</a>.
+            </p>
+
+            <div class="cta">
+              <a class="btn primary" href="https://famequizzers.com/long-term-outcomes/attention-landscape/"><span class="spark" aria-hidden="true"></span> Attention Landscape</a>
+              <a class="btn" href="https://famequizzers.com/">Main page</a>
+            </div>
+          </section>
+
+          <section class="faq" id="faq" aria-label="Frequently asked questions">
+            <h2>FAQ</h2>
+
+            <details>
+              <summary>What is fame, in practical terms?</summary>
+              <p>
+                Fame is repeated public recognition at a scale where information about you spreads through networks faster than direct, personal context can keep up.
+                It’s a visibility mechanism built from repetition, distribution, and intermediaries.
+              </p>
+            </details>
+
+            <details>
+              <summary>What is attention amplification?</summary>
+              <p>
+                Attention amplification is when one unit of attention increases the probability of more attention through sharing, recommendation, coverage, and remixing.
+                The system multiplies what travels well.
+              </p>
+            </details>
+
+            <details>
+              <summary>What are visibility thresholds?</summary>
+              <p>
+                Visibility thresholds are scale points where the rules change—recognition becomes persistent, audiences become less coherent, and compressed narratives (clips, labels, headlines) dominate.
+              </p>
+            </details>
+
+            <details>
+              <summary>Why does public recognition behave differently at different scales?</summary>
+              <p>
+                At smaller scales, recognition is contextual and tied to communities. At larger scales, recognition becomes decontextualized—people recognize a simplified version because it’s easier to transmit.
+              </p>
+            </details>
+
+            <details>
+              <summary>Is this page advice for becoming famous?</summary>
+              <p>
+                No. This page describes mechanisms—how attention tends to spread and change shape as it scales. It’s descriptive, not prescriptive.
+              </p>
+            </details>
+          </section>
+
+          <footer class="footer">
+            <div>
+              <strong>Next reading:</strong>
+              <a class="inline" href="https://famequizzers.com/guides/visibility-and-identity/">Persona vs Public Image</a>
+              <span style="opacity:.55;">·</span>
+              <a class="inline" href="https://famequizzers.com/guides/audience-ecosystem/">The Audience Ecosystem</a>
+            </div>
+            <div style="margin-top:8px;">
+              Last updated: <time datetime="2026-01-08">January 8, 2026</time>
+            </div>
+          </footer>
+        </div>
+      </article>
+
+      <!-- Sidebar -->
+      <aside class="card soft toc" aria-label="On this page">
+        <div class="inner">
+          <h2>On this page</h2>
+          <a href="#definition">Definition: fame as a mechanism</a>
+          <a href="#attention-amplification">Attention amplification</a>
+          <a href="#thresholds">Visibility thresholds</a>
+          <a href="#narrative-compression">Narrative compression</a>
+          <a href="#feedback-loops">Feedback loops</a>
+          <a href="#why-recognition-changes">Why recognition changes</a>
+          <a href="#common-mistakes">Common misreads</a>
+          <a href="#how-this-connects">How it connects to the site</a>
+          <a href="#faq">FAQ</a>
+
+          <div class="callout" style="margin-top:14px; border-color: rgba(102,240,255,0.18); background: rgba(102,240,255,0.06);">
+            <div class="kicker">SEO-friendly structure</div>
+            This page is built to be crawlable: strong headings, real definitions, internal links, and FAQ schema—without turning into “life advice.”
+          </div>
+        </div>
+      </aside>
+    </div>
+  </main>
+</body>
+
+</html>
