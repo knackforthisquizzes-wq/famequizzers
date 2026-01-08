@@ -735,6 +735,131 @@
 .hub-card::before{
   opacity: 0.45; /* was 0.75 */
 }
+/* ====== PILLAR GUIDE PROMO ====== */
+.pillar{
+  padding: 10px 20px 26px;
+}
+
+.pillar-inner{
+  max-width: 980px;
+  margin: 0 auto;
+}
+
+.pillar-card{
+  position: relative;
+  overflow: hidden;
+
+  border-radius: 22px;
+  border: 1px solid rgba(255,255,255,0.18);
+
+  background:
+    radial-gradient(900px 520px at 18% 20%, rgba(182,107,255,0.20), transparent 60%),
+    radial-gradient(900px 520px at 82% 28%, rgba(102,240,255,0.12), transparent 62%),
+    rgba(0,0,0,0.24);
+
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  box-shadow: 0 18px 55px rgba(0,0,0,0.40);
+
+  padding: clamp(18px, 2.6vw, 22px);
+  text-align: center;
+}
+
+.pillar-card::before{
+  content:"";
+  position:absolute;
+  inset:-30% -25%;
+  background:
+    radial-gradient(circle at 22% 28%, rgba(255,255,255,0.10), transparent 58%),
+    linear-gradient(115deg, transparent 35%, rgba(255,255,255,0.08), transparent 65%);
+  transform: rotate(10deg);
+  opacity: 0.75;
+  pointer-events:none;
+}
+
+.pillar-badge{
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  font-weight: 900;
+  font-size: 12px;
+  letter-spacing: 0.9px;
+  text-transform: uppercase;
+
+  padding: 8px 10px;
+  border-radius: 999px;
+
+  background: rgba(0,0,0,0.55);
+  border: 1px solid rgba(255,255,255,0.18);
+  color: rgba(255,255,255,0.92);
+
+  margin-bottom: 12px;
+}
+
+.pillar-title{
+  margin: 0 auto;
+  max-width: 42ch;
+  font-size: clamp(20px, 2.4vw, 28px);
+  line-height: 1.18;
+  text-shadow: 0 10px 25px rgba(0,0,0,0.55);
+}
+
+.pillar-sub{
+  margin: 10px auto 0;
+  max-width: 70ch;
+  opacity: 0.88;
+  line-height: 1.55;
+  text-shadow: 0 10px 25px rgba(0,0,0,0.55);
+}
+
+.pillar-actions{
+  margin-top: 14px;
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.pillar-btn{
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 11px 14px;
+  border-radius: 14px;
+  text-decoration: none;
+  font-weight: 800;
+
+  border: 1px solid rgba(255,255,255,0.22);
+  background: rgba(0,0,0,0.18);
+
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+
+  transition: transform 180ms ease, border-color 180ms ease, background 180ms ease;
+}
+
+.pillar-btn.primary{
+  background: linear-gradient(135deg, rgba(182,107,255,0.18), rgba(102,240,255,0.10));
+  border-color: rgba(182,107,255,0.38);
+}
+
+.pillar-btn.ghost{
+  background: rgba(0,0,0,0.16);
+}
+
+.pillar-btn:hover{
+  transform: translateY(-2px);
+  border-color: rgba(255,255,255,0.35);
+  background: rgba(0,0,0,0.26);
+}
+
+.pillar-fine{
+  margin-top: 12px;
+  font-size: 13px;
+  opacity: 0.72;
+}
 
   </style>
 </head>
@@ -915,6 +1040,32 @@
 </div>
 
     </section>
+<!-- PILLAR GUIDE PROMO (place under the hub strip, before the about-quick section) -->
+<section class="pillar" aria-label="Pillar guide">
+  <div class="pillar-inner">
+    <div class="pillar-card">
+      <div class="pillar-badge" aria-hidden="true">Pillar Guide</div>
+
+      <h2 class="pillar-title">How Fame Actually Works (It’s Not “Vibes,” It’s Mechanics)</h2>
+      <p class="pillar-sub">
+        A system-level breakdown of attention amplification, visibility thresholds, narrative compression,
+        and why public recognition changes shape as scale increases.
+      </p>
+
+      <div class="pillar-actions">
+        <a class="pillar-btn primary"
+           href="/guide/fame-mechanics-attention-economy-public-recognition/">
+          Read the Guide →
+        </a>
+        <a class="pillar-btn ghost" href="#hubs">Back to Phases</a>
+      </div>
+
+      <div class="pillar-fine">
+        Built to be crawlable: real definitions, headings, internal links, and FAQ schema.
+      </div>
+    </div>
+  </div>
+</section>
 
     <!-- SCROLL DEPTH TEXT (white, under hubs, above folder) -->
     <section class="about-quick" aria-label="What FameQuizzers Is">
