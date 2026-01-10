@@ -1,0 +1,873 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- Long-tail, SERP-friendly title -->
+  <title>Persona vs Public Image: Why Visibility Compresses People Into Narratives (Persona Formation & Image Drift)</title>
+
+  <meta name="description" content="A system-level guide to persona vs public image: how repeated exposure compresses complex people into portable narratives, why caricatures spread, and how persona formation and image drift work at scale." />
+  <meta name="keywords" content="persona vs public image, persona formation, image drift, narrative compression, public visibility, context collapse, how the internet perceives people" />
+  <meta name="robots" content="index,follow,max-image-preview:large" />
+  <link rel="canonical" href="https://famequizzers.com/guide/persona-vs-public-image-visibility-compression/" />
+
+  <!-- Open Graph -->
+  <meta property="og:site_name" content="FameQuizzer" />
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="Persona vs Public Image: Why Visibility Compresses People Into Narratives" />
+  <meta property="og:description" content="Why repeated exposure produces caricature rather than clarity: persona formation, image drift, and narrative compression at scale." />
+  <meta property="og:url" content="https://famequizzers.com/guide/persona-vs-public-image-visibility-compression/" />
+  <meta property="og:image" content="https://famequizzers.com/og/persona-vs-public-image.png" />
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Persona vs Public Image: Visibility Compression & Image Drift" />
+  <meta name="twitter:description" content="An analytical explanation of how audiences compress people into portable narratives as visibility scales." />
+  <meta name="twitter:image" content="https://famequizzers.com/og/persona-vs-public-image.png" />
+
+  <meta name="theme-color" content="#0b0b10" />
+
+  <style>
+    :root{
+      --bg: #05060a;
+      --card: rgba(10, 11, 18, 0.72);
+      --card2: rgba(10, 11, 18, 0.58);
+      --text: rgba(255,255,255,0.92);
+      --muted: rgba(255,255,255,0.70);
+      --faint: rgba(255,255,255,0.52);
+      --stroke: rgba(255,255,255,0.10);
+
+      --purple: #b66bff;
+      --aqua: #66f0ff;
+
+      --shadow: 0 18px 55px rgba(0,0,0,0.55);
+      --radius: 18px;
+      --max: 1080px;
+    }
+
+    * { box-sizing: border-box; }
+    html, body { height: 100%; }
+    body{
+      margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Apple Color Emoji","Segoe UI Emoji";
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    /* Video background */
+    .bg-wrap{
+      position: fixed;
+      inset: 0;
+      z-index: -2;
+      overflow: hidden;
+      background: #000;
+    }
+    .bg-video{
+      position:absolute;
+      inset:0;
+      width:100%;
+      height:100%;
+      object-fit: cover;
+      filter: contrast(1.05) saturate(1.05) brightness(0.78);
+      transform: scale(1.02);
+    }
+    .bg-overlay{
+      position:absolute;
+      inset:0;
+      background:
+        radial-gradient(900px 600px at 18% 12%, rgba(182,107,255,0.20), transparent 55%),
+        radial-gradient(900px 600px at 82% 18%, rgba(102,240,255,0.12), transparent 60%),
+        linear-gradient(to bottom, rgba(0,0,0,0.70), rgba(0,0,0,0.82));
+      z-index: -1;
+    }
+    .grain{
+      position:absolute;
+      inset:0;
+      pointer-events:none;
+      opacity:0.11;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='120' height='120' filter='url(%23n)' opacity='.55'/%3E%3C/svg%3E");
+      mix-blend-mode: overlay;
+    }
+
+    header{ padding: 42px 18px 22px; }
+    .wrap{
+      width: min(var(--max), calc(100% - 36px));
+      margin: 0 auto;
+    }
+
+    .topbar{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap: 14px;
+      margin-bottom: 18px;
+    }
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      text-decoration:none;
+      color: var(--text);
+      letter-spacing: 0.2px;
+    }
+    .logo-dot{
+      width: 12px;
+      height: 12px;
+      border-radius: 999px;
+      background: linear-gradient(135deg, var(--purple), var(--aqua));
+      box-shadow: 0 0 22px rgba(182,107,255,0.35);
+    }
+    .brand span{
+      font-weight: 700;
+      font-size: 14px;
+      opacity: 0.92;
+    }
+
+    .crumbs{
+      font-size: 13px;
+      color: var(--faint);
+      display:flex;
+      gap: 8px;
+      align-items:center;
+      flex-wrap: wrap;
+    }
+    .crumbs a{
+      color: var(--muted);
+      text-decoration:none;
+      border-bottom: 1px solid transparent;
+    }
+    .crumbs a:hover{ border-bottom-color: rgba(255,255,255,0.25); }
+    .sep{ opacity: 0.5; }
+
+    .hero{ padding: 18px 0 18px; }
+
+    .badge-row{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      margin-bottom: 14px;
+    }
+    .badge{
+      padding: 7px 10px;
+      border: 1px solid var(--stroke);
+      border-radius: 999px;
+      background: rgba(10, 11, 18, 0.40);
+      font-size: 12px;
+      color: var(--muted);
+      display:inline-flex;
+      gap:8px;
+      align-items:center;
+      backdrop-filter: blur(8px);
+    }
+    .badge i{
+      width:8px;height:8px;border-radius:999px;
+      background: var(--purple);
+      box-shadow: 0 0 14px rgba(182,107,255,0.30);
+      display:inline-block;
+    }
+    .badge.aqua i{ background: var(--aqua); box-shadow: 0 0 14px rgba(102,240,255,0.24); }
+
+    h1{
+      margin: 0 0 10px;
+      font-size: clamp(30px, 3.4vw, 46px);
+      line-height: 1.12;
+      letter-spacing: -0.02em;
+    }
+    .lede{
+      margin: 0;
+      max-width: 74ch;
+      font-size: 16px;
+      color: var(--muted);
+    }
+
+    main{ padding: 10px 0 60px; }
+
+    .grid{
+      display:grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 18px;
+      align-items:start;
+    }
+    @media (max-width: 980px){
+      .grid{ grid-template-columns: 1fr; }
+    }
+
+    .card{
+      border: 1px solid var(--stroke);
+      border-radius: var(--radius);
+      background: var(--card);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(10px);
+      overflow:hidden;
+    }
+    .card .inner{ padding: 18px 18px; }
+    .card.soft{ background: var(--card2); }
+
+    .toc h2{
+      margin:0 0 8px;
+      font-size: 14px;
+      letter-spacing: 0.02em;
+      text-transform: uppercase;
+      color: var(--faint);
+    }
+    .toc a{
+      display:block;
+      padding: 10px 12px;
+      margin: 6px 0;
+      border-radius: 12px;
+      border: 1px solid rgba(255,255,255,0.08);
+      text-decoration:none;
+      color: var(--muted);
+      background: rgba(0,0,0,0.18);
+    }
+    .toc a:hover{
+      border-color: rgba(182,107,255,0.22);
+      color: var(--text);
+    }
+
+    article h2{
+      margin: 0 0 8px;
+      font-size: 22px;
+      letter-spacing: -0.01em;
+    }
+    article h3{
+      margin: 18px 0 8px;
+      font-size: 18px;
+      letter-spacing: -0.01em;
+      color: var(--text);
+    }
+    article p{ margin: 0 0 14px; color: var(--muted); }
+    article strong{ color: var(--text); font-weight: 700; }
+
+    .callout{
+      border: 1px solid rgba(182,107,255,0.20);
+      background: rgba(182,107,255,0.08);
+      border-radius: 14px;
+      padding: 14px 14px;
+      color: var(--muted);
+      margin: 14px 0 18px;
+    }
+    .callout .kicker{
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: rgba(255,255,255,0.72);
+      margin-bottom: 6px;
+    }
+
+    .two-col{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin: 14px 0 18px;
+    }
+    @media (max-width: 720px){
+      .two-col{ grid-template-columns: 1fr; }
+    }
+    .mini{
+      padding: 14px 14px;
+      border-radius: 14px;
+      border: 1px solid rgba(255,255,255,0.10);
+      background: rgba(0,0,0,0.18);
+    }
+    .mini h4{
+      margin:0 0 6px;
+      font-size: 14px;
+      color: var(--text);
+    }
+    .mini p{ margin:0; color: var(--muted); font-size: 14px; }
+
+    .table{
+      width: 100%;
+      border-collapse: collapse;
+      margin: 12px 0 18px;
+      font-size: 14px;
+    }
+    .table th, .table td{
+      padding: 10px 10px;
+      border-bottom: 1px solid rgba(255,255,255,0.10);
+      vertical-align: top;
+      color: var(--muted);
+    }
+    .table th{
+      text-align:left;
+      color: rgba(255,255,255,0.82);
+      font-weight: 700;
+    }
+
+    .pill{
+      display:inline-block;
+      padding: 4px 10px;
+      border-radius: 999px;
+      font-size: 12px;
+      border: 1px solid rgba(255,255,255,0.10);
+      background: rgba(0,0,0,0.18);
+      color: var(--muted);
+      white-space: nowrap;
+    }
+    .pill.purple{ border-color: rgba(182,107,255,0.25); }
+    .pill.aqua{ border-color: rgba(102,240,255,0.22); }
+
+    a.inline{
+      color: rgba(255,255,255,0.88);
+      text-decoration: none;
+      border-bottom: 1px solid rgba(182,107,255,0.45);
+    }
+    a.inline:hover{ border-bottom-color: rgba(102,240,255,0.55); }
+
+    .faq details{
+      border: 1px solid rgba(255,255,255,0.10);
+      background: rgba(0,0,0,0.18);
+      border-radius: 14px;
+      padding: 12px 14px;
+      margin: 10px 0;
+    }
+    .faq summary{
+      cursor:pointer;
+      font-weight: 700;
+      color: rgba(255,255,255,0.86);
+      outline: none;
+    }
+    .faq p{ margin: 10px 0 0; color: var(--muted); }
+
+    .footer{
+      margin-top: 18px;
+      padding: 18px 18px;
+      border-top: 1px solid rgba(255,255,255,0.10);
+      color: var(--faint);
+      font-size: 13px;
+    }
+
+    .cta{
+      display:flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-top: 12px;
+    }
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:10px;
+      padding: 10px 14px;
+      border-radius: 14px;
+      border: 1px solid rgba(255,255,255,0.12);
+      background: rgba(0,0,0,0.20);
+      color: rgba(255,255,255,0.90);
+      text-decoration:none;
+      font-weight: 700;
+      font-size: 14px;
+    }
+    .btn:hover{
+      border-color: rgba(182,107,255,0.22);
+      box-shadow: 0 0 0 3px rgba(182,107,255,0.10);
+    }
+    .btn.primary{
+      border-color: rgba(182,107,255,0.35);
+      background: linear-gradient(135deg, rgba(182,107,255,0.16), rgba(102,240,255,0.10));
+    }
+    .btn .spark{
+      width:8px;height:8px;border-radius:999px;
+      background: var(--aqua);
+      box-shadow: 0 0 14px rgba(102,240,255,0.22);
+    }
+  </style>
+
+  <!-- Structured Data: extended graph + FAQ + breadcrumbs -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Organization",
+        "@id": "https://famequizzers.com/#org",
+        "name": "FameQuizzer",
+        "url": "https://famequizzers.com/",
+        "logo": { "@type": "ImageObject", "url": "https://famequizzers.com/logo.png" },
+        "sameAs": []
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://famequizzers.com/#website",
+        "url": "https://famequizzers.com/",
+        "name": "FameQuizzer",
+        "publisher": { "@id": "https://famequizzers.com/#org" },
+        "inLanguage": "en"
+      },
+      {
+        "@type": "WebPage",
+        "@id": "https://famequizzers.com/guide/persona-vs-public-image-visibility-compression/#webpage",
+        "url": "https://famequizzers.com/guide/persona-vs-public-image-visibility-compression/",
+        "name": "Persona vs Public Image: Why Visibility Compresses People Into Narratives",
+        "description": "A system-level guide to persona vs public image: how repeated exposure compresses complex people into portable narratives, why caricatures spread, and how persona formation and image drift work at scale.",
+        "isPartOf": { "@id": "https://famequizzers.com/#website" },
+        "about": [
+          { "@type": "Thing", "name": "Persona" },
+          { "@type": "Thing", "name": "Public image" },
+          { "@type": "Thing", "name": "Narrative compression" },
+          { "@type": "Thing", "name": "Public visibility" }
+        ],
+        "breadcrumb": { "@id": "https://famequizzers.com/guide/persona-vs-public-image-visibility-compression/#breadcrumb" },
+        "primaryImageOfPage": { "@type": "ImageObject", "url": "https://famequizzers.com/og/persona-vs-public-image.png" },
+        "inLanguage": "en"
+      },
+      {
+        "@type": "BreadcrumbList",
+        "@id": "https://famequizzers.com/guide/persona-vs-public-image-visibility-compression/#breadcrumb",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://famequizzers.com/" },
+          { "@type": "ListItem", "position": 2, "name": "Persona vs Public Image", "item": "https://famequizzers.com/guide/persona-vs-public-image-visibility-compression/" }
+        ]
+      },
+      {
+        "@type": "Article",
+        "@id": "https://famequizzers.com/guide/persona-vs-public-image-visibility-compression/#article",
+        "headline": "Persona vs Public Image: Why Visibility Compresses People Into Narratives (Persona Formation & Image Drift)",
+        "description": "An analytical look at how repeated exposure compresses complex people into portable narratives, why caricatures spread, and how persona formation and image drift work at scale.",
+        "mainEntityOfPage": { "@id": "https://famequizzers.com/guide/persona-vs-public-image-visibility-compression/#webpage" },
+        "author": {
+          "@type": "Organization",
+          "name": "FameQuizzer Editorial",
+          "url": "https://famequizzers.com/"
+        },
+        "publisher": { "@id": "https://famequizzers.com/#org" },
+        "datePublished": "2026-01-08",
+        "dateModified": "2026-01-08",
+        "image": "https://famequizzers.com/og/persona-vs-public-image.png",
+        "keywords": [
+          "persona vs public image",
+          "persona formation",
+          "image drift",
+          "narrative compression",
+          "context collapse",
+          "public visibility"
+        ],
+        "inLanguage": "en"
+      },
+      {
+        "@type": "FAQPage",
+        "@id": "https://famequizzers.com/guide/persona-vs-public-image-visibility-compression/#faq",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "What’s the difference between a persona and a public image?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "A persona is the version of someone that gets presented (deliberately or by habit). A public image is the version that spreads through audiences and intermediaries. Persona is an output; public image is a distributed artifact shaped by repetition and context loss."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What is visibility compression?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Visibility compression is the tendency for audiences to reduce complex individuals into a small set of portable traits (a headline, a vibe, a clip, a label) as exposure increases. The compressed version travels better than the full person."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What is image drift?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Image drift is the gradual divergence between what someone does in real contexts and what the public believes about them. Drift happens because repeated summaries, edits, and third-party framing become more widely consumed than the original source."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Why does repeated exposure create caricature instead of clarity?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Because large audiences mostly receive compressed representations: consistent fragments get repeated, inconsistencies get discarded, and intermediaries highlight what’s most legible. Over time, the portable version becomes the dominant reference point."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Is this article giving advice on how to manage identity or reputation?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "No. This article explains how persona formation and public image behave as visibility scales. It’s descriptive, not prescriptive."
+            }
+          }
+        ]
+      }
+    ]
+  }
+  </script>
+</head>
+
+<body>
+  <!-- Background video (swap src to your actual file path) -->
+  <div class="bg-wrap" aria-hidden="true">
+    <video class="bg-video" autoplay muted loop playsinline preload="metadata">
+      <source src="/media/dark-fame-bg.mp4" type="video/mp4" />
+    </video>
+    <div class="bg-overlay"></div>
+    <div class="grain"></div>
+  </div>
+
+  <header>
+    <div class="wrap">
+      <div class="topbar">
+        <a class="brand" href="https://famequizzers.com/">
+          <span class="logo-dot" aria-hidden="true"></span>
+          <span>FameQuizzer</span>
+        </a>
+
+        <nav class="crumbs" aria-label="Breadcrumb">
+          <a href="https://famequizzers.com/">Home</a>
+          <span class="sep">/</span>
+          <span aria-current="page">Persona vs Public Image</span>
+        </nav>
+      </div>
+
+      <section class="hero">
+        <div class="badge-row" aria-label="Page highlights">
+          <span class="badge"><i aria-hidden="true"></i> Identity mechanics (not advice)</span>
+          <span class="badge aqua"><i aria-hidden="true"></i> Persona formation & image drift</span>
+          <span class="badge"><i aria-hidden="true"></i> Narrative compression</span>
+        </div>
+
+        <h1>Persona vs Public Image: Why Visibility Compresses People</h1>
+        <p class="lede">
+          When visibility scales up, the public doesn’t receive “more information” about a person. It receives
+          <strong>more repetitions of a smaller set of information</strong>. That’s how complex humans turn into portable narratives:
+          a clip, a label, a vibe, a single trait that becomes the whole story. This guide explains the mechanism:
+          <strong>persona formation</strong>, <strong>image drift</strong>, and why repeated exposure often produces caricature rather than clarity.
+        </p>
+
+        <div class="cta">
+          <a class="btn primary" href="#visibility-compression"><span class="spark" aria-hidden="true"></span> Start with compression</a>
+          <a class="btn" href="#faq">FAQ</a>
+        </div>
+      </section>
+    </div>
+  </header>
+
+  <main>
+    <div class="wrap grid">
+      <!-- Main article -->
+      <article class="card" id="main-article">
+        <div class="inner">
+
+          <section id="definitions">
+            <h2>Definitions: persona, public image, and the “distributed you”</h2>
+            <p>
+              To keep this clean, separate three things that often get mashed together:
+            </p>
+
+            <div class="two-col" role="group" aria-label="Core definitions">
+              <div class="mini">
+                <h4>Persona</h4>
+                <p>
+                  The version of someone that gets presented—deliberately, by habit, or by role. Persona is an <strong>output</strong>.
+                </p>
+              </div>
+              <div class="mini">
+                <h4>Public image</h4>
+                <p>
+                  The version that spreads through audiences and intermediaries. Public image is a <strong>distributed artifact</strong>.
+                </p>
+              </div>
+            </div>
+
+            <p>
+              The difference matters because persona can be produced in full context, but public image is typically consumed in fragments.
+              As visibility increases, public image becomes less “what someone is like” and more “the most repeatable summary of them.”
+            </p>
+
+            <div class="callout" role="note" aria-label="Key idea">
+              <div class="kicker">Key idea</div>
+              At scale, the “you” that circulates is not a person. It’s a bundle of <strong>repeatable signals</strong>.
+              People don’t share nuance. They share what fits in the bandwidth of the network.
+            </div>
+          </section>
+
+          <section id="visibility-compression">
+            <h2>Visibility compression: why complexity collapses under repetition</h2>
+            <p>
+              <strong>Visibility compression</strong> is the tendency for audiences to reduce complex individuals into a small set of portable traits
+              as exposure increases. This isn’t always cruelty. It’s an efficiency move: people need a shortcut so they know “what to do” with a person in conversation.
+            </p>
+
+            <h3>Compression is selection</h3>
+            <p>
+              When hundreds (or millions) of people encounter someone through fragments, the fragments that survive are the ones that:
+              are easiest to describe, easiest to repeat, and easiest to recognize.
+            </p>
+
+            <table class="table" aria-label="What survives compression table">
+              <thead>
+                <tr>
+                  <th>What survives</th>
+                  <th>Why it survives</th>
+                  <th>Typical form</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><span class="pill purple">Single trait</span></td>
+                  <td>One trait is easy to remember and socially useful.</td>
+                  <td>“The funny one” / “the villain” / “the genius”</td>
+                </tr>
+                <tr>
+                  <td><span class="pill aqua">Signature moment</span></td>
+                  <td>Moments are portable and clip-friendly.</td>
+                  <td>A quote, a clip, a reaction, a screenshot</td>
+                </tr>
+                <tr>
+                  <td><span class="pill purple">Aesthetic signal</span></td>
+                  <td>Style transmits faster than explanation.</td>
+                  <td>Look, vibe, branding, recognizable visuals</td>
+                </tr>
+                <tr>
+                  <td><span class="pill aqua">Conflict frame</span></td>
+                  <td>Conflict is instantly legible.</td>
+                  <td>“X vs Y” / “controversy” / “feud” narrative</td>
+                </tr>
+              </tbody>
+            </table>
+
+            <p>
+              The byproduct is predictable: the compressed version becomes the default reference point, and anything that contradicts it gets treated as “out of character.”
+              Not because contradiction is impossible—because contradiction is <strong>hard to transmit</strong>.
+            </p>
+          </section>
+
+          <section id="persona-formation">
+            <h2>Persona formation: how a “version” gets locked in</h2>
+            <p>
+              Persona formation is the process where a presented style becomes stable—either because the person consistently outputs it,
+              or because audiences and intermediaries repeatedly select it.
+            </p>
+
+            <h3>Three ways a persona solidifies</h3>
+            <div class="two-col" role="group" aria-label="Persona formation modes">
+              <div class="mini">
+                <h4>Deliberate</h4>
+                <p>
+                  A consistent voice, aesthetic, or role is produced intentionally because it’s coherent and easy for audiences to place.
+                </p>
+              </div>
+              <div class="mini">
+                <h4>Inertial</h4>
+                <p>
+                  A style becomes default because repeating it is easier than constantly reintroducing complexity.
+                </p>
+              </div>
+              <div class="mini" style="grid-column: 1 / -1;">
+                <h4>Selected by the audience</h4>
+                <p>
+                  Audiences repeatedly amplify one aspect of a person, until that amplified aspect becomes the “official” version—whether or not it’s representative.
+                </p>
+              </div>
+            </div>
+
+            <p>
+              The last one is the weird one: a person can output many signals, but the network may only reward a subset.
+              Over time, the rewarded subset becomes what everyone “knows.”
+            </p>
+
+            <div class="callout" role="note" aria-label="Mechanism note">
+              <div class="kicker">Mechanism note</div>
+              Persona formation doesn’t require a conspiracy. It only requires selection + repetition. Networks converge on the most legible representation.
+            </div>
+          </section>
+
+          <section id="context-collapse">
+            <h2>Context collapse: why audiences disagree about who someone “really is”</h2>
+            <p>
+              <strong>Context collapse</strong> happens when multiple audiences with different expectations, norms, and reference points
+              encounter the same person or content. The same signal gets interpreted differently depending on where it lands.
+            </p>
+
+            <h3>In small contexts, meaning is negotiated</h3>
+            <p>
+              In a tight community, people can ask for clarification, observe patterns over time, and update their understanding.
+              The person is experienced as a whole sequence, not a single frame.
+            </p>
+
+            <h3>In collapsed contexts, meaning is assigned</h3>
+            <p>
+              At scale, a single clip can be interpreted by many groups who never share context with each other.
+              The result is not consensus; it’s parallel versions of the same person.
+            </p>
+          </section>
+
+          <section id="image-drift">
+            <h2>Image drift: how public image diverges from the source</h2>
+            <p>
+              <strong>Image drift</strong> is the gradual divergence between what someone does in real contexts and what the public believes about them.
+              Drift happens when compressed representations become more widely consumed than the original source.
+            </p>
+
+            <h3>Drift is powered by intermediaries</h3>
+            <p>
+              Intermediaries include: clip accounts, commentary, headlines, summaries, and even casual retellings.
+              Each layer simplifies. Each layer chooses emphasis. That emphasis becomes “the story.”
+            </p>
+
+            <table class="table" aria-label="Image drift pipeline">
+              <thead>
+                <tr>
+                  <th>Layer</th>
+                  <th>What it tends to do</th>
+                  <th>What gets lost</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>Source</strong></td>
+                  <td>Full context, sequence, nuance.</td>
+                  <td>Nothing (this is the reference).</td>
+                </tr>
+                <tr>
+                  <td><strong>Clip / excerpt</strong></td>
+                  <td>Selects a moment that “stands alone.”</td>
+                  <td>Lead-up, tone shifts, surrounding detail.</td>
+                </tr>
+                <tr>
+                  <td><strong>Caption / headline</strong></td>
+                  <td>Names the moment in one frame.</td>
+                  <td>Ambiguity, intent, competing interpretations.</td>
+                </tr>
+                <tr>
+                  <td><strong>Retelling</strong></td>
+                  <td>Optimizes for memorability.</td>
+                  <td>Precision; edge cases; exceptions.</td>
+                </tr>
+              </tbody>
+            </table>
+
+            <p>
+              Drift is not “lies versus truth.” It’s often <strong>compression versus completeness</strong>.
+              The most repeated version becomes the most believed version, because repetition is a credibility signal in social systems.
+            </p>
+          </section>
+
+          <section id="caricature">
+            <h2>Why repeated exposure produces caricature instead of clarity</h2>
+            <p>
+              Intuition says: more exposure should equal more accurate understanding.
+              Systems say: more exposure often equals <strong>more repetition of what already spread</strong>.
+            </p>
+
+            <h3>Caricature is the stable attractor</h3>
+            <p>
+              A caricature is stable because it’s easy to repeat and easy to recognize. It gives audiences a simple handle.
+              Clarity requires time, context, and tolerance for contradictions—things that don’t distribute well.
+            </p>
+
+            <div class="two-col" role="group" aria-label="Caricature vs clarity">
+              <div class="mini">
+                <h4>Caricature</h4>
+                <p>
+                  Portable, repeatable, socially useful. Works well for quick recognition and conversation.
+                </p>
+              </div>
+              <div class="mini">
+                <h4>Clarity</h4>
+                <p>
+                  Context-heavy, time-dependent, less repeatable. Requires sustained attention and fewer intermediaries.
+                </p>
+              </div>
+            </div>
+
+            <div class="callout" role="note" aria-label="Bottom line">
+              <div class="kicker">Bottom line</div>
+              Repetition is not the same thing as understanding. Large-scale recognition grows through repetition; understanding grows through context.
+            </div>
+          </section>
+
+          <section id="how-this-connects">
+            <h2>How this connects to FameQuizzer</h2>
+            <p>
+              FameQuizzer treats persona and public image as different objects with different rules.
+              Many quizzes on the site test how people respond when a “version” of them starts circulating—whether they attempt to shape it,
+              ignore it, redirect it, or refuse to become legible.
+            </p>
+            <p>
+              Start with these hubs if you want the applied versions:
+              <a class="inline" href="https://famequizzers.com/celebrity-fantasy/">Celebrity Fantasy</a>,
+              <a class="inline" href="https://famequizzers.com/early-success/">Early Success</a>,
+              and <a class="inline" href="https://famequizzers.com/sustained-fame/">Sustained Fame</a>.
+            </p>
+
+            <div class="cta">
+              <a class="btn primary" href="https://famequizzers.com/sustained-fame/"><span class="spark" aria-hidden="true"></span> Explore: Sustained Fame</a>
+              <a class="btn" href="https://famequizzers.com/guide/how-fame-works-attention-amplification-thresholds/">Previous guide: How Fame Works</a>
+            </div>
+          </section>
+
+          <section class="faq" id="faq" aria-label="Frequently asked questions">
+            <h2>FAQ</h2>
+
+            <details>
+              <summary>What’s the difference between a persona and a public image?</summary>
+              <p>
+                A persona is the presented version of someone (deliberate or habitual). A public image is the distributed version that spreads through audiences and intermediaries.
+                Persona is an output; public image is a network artifact shaped by selection and repetition.
+              </p>
+            </details>
+
+            <details>
+              <summary>What is visibility compression?</summary>
+              <p>
+                Visibility compression is the tendency for large audiences to reduce complex individuals into a small set of portable traits—like a label, clip, vibe, or signature moment—because those travel better than nuance.
+              </p>
+            </details>
+
+            <details>
+              <summary>What is image drift?</summary>
+              <p>
+                Image drift is the divergence between the source and the public’s belief. It occurs when edited, summarized, or third-party representations get consumed more than the original context.
+              </p>
+            </details>
+
+            <details>
+              <summary>Why does repeated exposure create caricature rather than clarity?</summary>
+              <p>
+                Large audiences mostly receive repeated fragments. Over time, the fragments that are easiest to repeat dominate the collective understanding, while contradictions and nuance get filtered out.
+              </p>
+            </details>
+
+            <details>
+              <summary>Is this article advice on how to manage identity or reputation?</summary>
+              <p>
+                No. It describes how persona formation and public image behave as visibility scales. It’s descriptive, not prescriptive.
+              </p>
+            </details>
+          </section>
+
+          <footer class="footer">
+            <div style="margin-top:8px;">
+              Last updated: <time datetime="2026-01-08">January 8, 2026</time>
+            </div>
+          </footer>
+        </div>
+      </article>
+
+      <!-- Sidebar -->
+      <aside class="card soft toc" aria-label="On this page">
+        <div class="inner">
+          <h2>On this page</h2>
+          <a href="#definitions">Definitions</a>
+          <a href="#visibility-compression">Visibility compression</a>
+          <a href="#persona-formation">Persona formation</a>
+          <a href="#context-collapse">Context collapse</a>
+          <a href="#image-drift">Image drift</a>
+          <a href="#caricature">Caricature vs clarity</a>
+          <a href="#how-this-connects">How it connects</a>
+          <a href="#faq">FAQ</a>
+
+          <div class="callout" style="margin-top:14px; border-color: rgba(102,240,255,0.18); background: rgba(102,240,255,0.06);">
+            <div class="kicker">Google clarity</div>
+            This page is intentionally non-YMYL: it explains mechanisms of public visibility (compression, drift, intermediaries) without diagnosing readers or prescribing action.
+          </div>
+        </div>
+      </aside>
+    </div>
+  </main>
+</body>
+</html>
